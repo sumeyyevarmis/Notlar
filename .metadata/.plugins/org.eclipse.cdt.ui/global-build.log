@@ -1,0 +1,25 @@
+21:35:43 **** Incremental Build of configuration Debug for project 2_RegisterLedBlink ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:18:35: warning: suggest parentheses around '+' inside '<<' [-Wparentheses]
+   18 |                 GPIOA->BSRR |= (1 << 7+16);
+      |                                   ^~
+arm-none-eabi-gcc -o "2_RegisterLedBlink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\sumey\STM32CubeIDE\workspace_1.19.0\2_RegisterLedBlink\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="2_RegisterLedBlink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 2_RegisterLedBlink.elf
+ 
+arm-none-eabi-size  2_RegisterLedBlink.elf 
+arm-none-eabi-objdump -h -S 2_RegisterLedBlink.elf  > "2_RegisterLedBlink.list"
+   text	   data	    bss	    dec	    hex	filename
+    772	      4	   1572	   2348	    92c	2_RegisterLedBlink.elf
+Finished building: default.size.stdout
+ 
+Finished building: 2_RegisterLedBlink.list
+ 
+21:35:47 **** Incremental Build of configuration Debug for project 2_RegisterLedBlink ****
+make -j16 all 
+arm-none-eabi-size  2_RegisterLedBlink.elf 
+   text	   data	    bss	    dec	    hex	filename
+    772	      4	   1572	   2348	    92c	2_RegisterLedBlink.elf
+Finished building: default.size.stdout
+ 

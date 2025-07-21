@@ -1,0 +1,10 @@
+21:34:33 **** Incremental Build of configuration Debug for project 1_RegisterFirst ****
+make -j16 all 
+arm-none-eabi-size  1_RegisterFirst.elf 
+   text	   data	    bss	    dec	    hex	filename
+    764	      4	   1572	   2340	    924	1_RegisterFirst.elf
+Finished building: default.size.stdout
+ 
+
+21:34:33 Build Finished. 0 errors, 0 warnings. (took 145ms)
+

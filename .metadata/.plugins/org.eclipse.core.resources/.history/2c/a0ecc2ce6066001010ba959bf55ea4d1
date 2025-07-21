@@ -1,0 +1,15 @@
+#include "main.h"
+
+int main()
+{
+	// GPIO u ac
+	RCC->APB2ENR |= (1 << 2); // Port A aktif
+
+	GPIOA->CRL &= ~(0xF << 28); //
+	GPIOA->CRL |= (0b0010 << 28); // Pin 7 = Output pull-up/pull-down, 2MHz
+
+	while(1){
+		GPIOA->BSRR |= (1<<7);
+	}
+
+}

@@ -1,0 +1,28 @@
+#include "main.h"
+
+
+void delay(volatile uint32_t time) {
+    while(time--);
+}
+
+int main(void) {
+    // 1. GPIOC saatini aç
+    RCC->APB2ENR |= (1 << 4); // IOPCEN → Bit 4
+
+    // 2. PC13'ü Output Push-Pull yap (2 MHz)
+    // PC13 = pin13 → CRH register'ında 4 bitlik alan: [23:20]
+    GPIOC->CRH &= ~(0xF << 20);     // Önce temizle
+    GPIOC->CRH |=  (0x2 << 20);     // MODE13=10, CNF13=00
+
+    while (1) {
+        // 3. PC13 LOW yap (LED ON)
+        GPIOC->BRR = (1 << 13);     // LED aktif low
+
+        delay(500000);
+
+        // 4. PC13 HIGH yap (LED OFF)
+        GPIOC->BSRR = (1 << 13);    // LED söndür
+
+        delay(500000);
+    }
+}

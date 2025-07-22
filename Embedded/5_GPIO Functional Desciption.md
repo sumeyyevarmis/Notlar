@@ -87,3 +87,108 @@ STM32F103 için RM0008'de bu register şu şekilde gösterilir.
 
 IOPCEN, GPIOC için saat sinyalini aktif hale getirir.
 ---
+
+### 3. Bit Ayarlama İşlemi
+Şimdi *RCC->APB2ENR |= (1 << 4)* ne yapar, adım adım;
+
+- **(1 << 4)**
+  0x00000010 = Yani sadece Bit 4 = 1
+- **RCC->APB2ENR |= (1 << 4);**
+  - Register'in mevcut içeriğini alır.
+  - Bit 4'ü 1 yapar.
+  - Diğer bitlere dokunmaz.
+  - Böylece IOPCEN aktif olur -> GPIOC çalışır hale gelir.
+
+**NOT**
+Bu işlem "bit ayarlama" olarak geçer ve çok yaygındır. Sadece ilgili biti değiştirmek için **|=**, silmek için **&= ~** kullanılır.
+
+#### Özetle
+**RCC->APB2ENR |= (1 << 4);**
+Şu anlama gelir;
+- RCC içindeki APB2ENR adlı 32 bitlik register'da bit 4'ü 1 yap ki bu da GPIOC'ye saat sinyali gönder anlamına gelir. Artık GPIOC çalışır.
+
+## 2. Neden CRH Ayarlıyoruz?
+Çünkü; Mikrodenetleyicide bir GPIO pini *varsayılan olarak input(giriş)* durumundadır. 
+
+Yani;
+- Bir portun hangi modda çalışacağını (giriş mi, çıkış mı, analog mu, vs.) söylemen gerekir.
+- Bu işi yapan yer **GPIOx_CRL** ve **GPIOc_CRH** adlı **Configuration Registers**'dır.
+
+### 1. CRL ve CRH Farkı Ne?
+Register    |    Hangi Pinleri Ayarlar          |
+------------|-----------------------------------|
+CRL         |    Pin 0-7 (PA0-7, PC0-7...)      |
+CRL         |    Pin 8-15 (PA8-15, PC8-15..)    |
+
+- Biz PC13'ü kullanıyoruz. Bu yüzden **GPIOC->CRH** kullanacağız.
+
+### 2. Şimdi CRH'nin Yapısına Bakalım
+Pin    | CRH Bit Aralığı
+-------|----------------
+PC8    | Bit 3:0
+PC9    | Bit 7:0
+PC10   | Bit 11:8
+PC11   | Bit 15:12
+PC12   | Bit 19:16
+PC13   | Bit 23:20
+PC14   | Bit 27:24
+PC15   | Bit 31:28
+
+Yani PC13 için CRH'nin 20-23 bitlerini ayarlamamız gerekiyor.
+
+### 3. O 4 Bit Neyi Belirtiyor
+4 bit şu şekilde bölünüyor;
+[CNF1 CNF0 MODE1 MODE0]
+- MODE[1:0] pinin hızını ve giriş/çıkış olacağını belirler
+- CNF[1:0] giriş tipi mi, çıkış tipi mi, vs.
+
+
+### 4. Örnek; PC13'ü Output, Push-pull, 2MHz Yapalım
+Parça    | Anlam            | Binary    | Hex
+---------|------------------|-----------|-----
+MODE     | Output, 2 MHz    | 10        | 2
+CNF      | Push-pull        | 00        | 0
+
+- 4 bit birleşimi **00 10 = 0010** bu da hex olarak **0x2**'dir.
+
+  Bu yüzden şunu yazıyoruz:
+
+  *GPIOC &= ~(0xF << 20);*
+  
+  *GPIO |= (0x2 << 20);*
+
+  ### 5. 0x2 Tanım Hex mi Binary mi Olmalı?
+Yazım Şekli    | Örnek Kod    | Açıklama                                 |
+---------------|--------------|------------------------------------------|
+Hex(16'lık)    | 0x2 << 20    | Kısa ve yaygın                           |
+Binary(2'lik)  | 0b0010 << 20 | Daha göresel ve anlaşılır                |
+Decimal(10'luk)| 2 << 20      | Tavsiye edilmez, ne olduğu anlaşılmaz    |
+
+0x2 = 0b0010 = decimal 2 => Aynı şey
+
+  *GPIOC &= ~(0b1111 << 20);*
+  
+  *GPIO |= (0b0010 << 20);*
+
+  şeklinde olur.
+
+  #### *0b* Ne Anlama Geliyor?
+  C dilinde (özellikle C99 ve sonrası standartlarında, STM32 projelerinde kullanılan GCC derleyici de dahil) bir sayının başına *0b* koyarsan; **Sayının binary sistemde yazıldığını belirtmiş olursun.**
+
+  ## 3. BSRR ve BRR Nedir? Ne için Kullanılır?
+  Her GPIO portunun içinde bu iki yazma register'ı vardır;
+  Register    | Açılımı                   |     Ne İşe Yarar                                       |
+  ------------|---------------------------|--------------------------------------------------------|
+  BSRR        | Bit Set/Reset Register    | Bitleri 1 ya da 0 yapmak için kullanılır. Aynı anda!   |
+  BRR         | Bit Reset Register        | Sadece sıfırlamak (Low yapmak) için kullanılır         |   
+
+  ### BSRR'nin Detaylı Yapısı
+  BSRR 32 bittir ve iki yarçaya ayrılır.
+  Bit Aralığı    | Anlamı                        |
+  ---------------|-------------------------------|
+  0-15           | Bir pinin High(1) yapılması   |
+  16-31          | Bir pinin Low(0) yapılması    |
+
+  Yani;
+  - **GPIOC->BSRR = (1 << 13)** PC13 High (Led off)
+  - **GPIOC->BRR = (1 << 13 +16)** PC12 Lıw (Led on)

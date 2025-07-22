@@ -138,12 +138,13 @@ int main()
 		delay(100000);
  80001a0:	4808      	ldr	r0, [pc, #32]	@ (80001c4 <main+0x58>)
  80001a2:	f7ff ffd3 	bl	800014c <delay>
-		GPIOA->BSRR |= (1 << 7+16);
+		GPIOA->BSRR |= (1 << 7+16); // Led off
  80001a6:	4b06      	ldr	r3, [pc, #24]	@ (80001c0 <main+0x54>)
  80001a8:	691b      	ldr	r3, [r3, #16]
  80001aa:	4a05      	ldr	r2, [pc, #20]	@ (80001c0 <main+0x54>)
  80001ac:	f443 0300 	orr.w	r3, r3, #8388608	@ 0x800000
  80001b0:	6113      	str	r3, [r2, #16]
+		// GPIOA->BRR = (1<<7); bu da olur. Ayni sekilde led off yapar
 		delay(100000);
  80001b2:	4804      	ldr	r0, [pc, #16]	@ (80001c4 <main+0x58>)
  80001b4:	f7ff ffca 	bl	800014c <delay>

@@ -1,0 +1,8 @@
+#include "main.h"
+
+int main(){
+
+	RCC->APB2ENR = (1 << 2);
+
+	GPIOA->CRL &= ~(0xF << 28);
+}

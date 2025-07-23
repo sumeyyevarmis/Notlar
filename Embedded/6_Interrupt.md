@@ -1,0 +1,2 @@
+# Interrupt Nedir ?
+Interrupt en genel anlamıyla işlemcimizde anlık olarak işlenmekte olan olayın her hangi bir anında kesilmesi ve başka bir iş yapılmasına denir. İşlem kesildikten sonra alt işlem bitirilene kadar üst işlem parçacığına devam edilir. Dikkat edilmesi gereken nokta; hangi olayların kesme hangi olaylaın kesme olmadığıdır. Eğer bir işlemin normal akışı içerisindeki olaylar, başka bir olayı engelliyorsa bu her zaman interrupt olmaz.

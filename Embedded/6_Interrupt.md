@@ -1,4 +1,4 @@
-# Interrupt
+# A. Interrupt
 ## 1. Interrupt Nedir ?
 Interrupt en genel anlamıyla işlemcimizde anlık olarak işlenmekte olan olayın her hangi bir anında kesilmesi ve başka bir iş yapılmasına denir. İşlem kesildikten sonra alt işlem bitirilene kadar üst işlem parçacığına devam edilir. Dikkat edilmesi gereken nokta; hangi olayların kesme hangi olaylaın kesme olmadığıdır. Eğer bir işlemin normal akışı içerisindeki olaylar, başka bir olayı engelliyorsa bu her zaman interrupt olmaz.
 
@@ -61,3 +61,65 @@ void EXTI0_IRQHandler(void) // PA0 pini için kesme fonksiyonu
 - ISR içinde genellikle kesme bayrağı temizlenir
 - ISR çalışırken başka ISR kesilebilir ya da engellenebilir (öncelik ayarlarıyla)
 - ISR'ler gerçek zamanlı sistemlerin bel kemiğidir.
+
+# B. NVIC: Nested Vectored Interrupt Controller
+
+## 1. NVIC Nedir ?
+Kesmeleri(interrupt) kontrol eden ve yöneten birimdir. Cortex-M3 çekirdeği ile birlikte gelir.
+
+### Görevi:
+- Kesmeleri aktifleştirmek veya devre dışı bırakmak
+- Öncelik belirlemek
+- İşlemciye kesme gerektiğinde hangi ISR çalışacak, onu yönetmek
+- Aynı anda birden fazla kesme olursa sıralamak
+- Daha öncelikli kesmeye anında geçiş sağlamak
+
+## 2. NVIC Ne Yapar ?
+Görev              |     Açıklama                                                |
+-------------------|-------------------------------------------------------------|
+Enable/Disable     | Hangi interrupt aktif, hangisi pasif belirler               |
+Priority(öncelik)  | Her kesmeye bir öncelik verir. Küçük sayı = yüksek öncelik  |
+Pendig Takibi      | Bekleyen kesmeyi "pendig" olarak işaretler                  |
+Active Takibi      | O anda çalışan kesmeyi "active" olarak işaretler            |
+Nested Interrupt   | İç içe kesmekere izin verir (önceliğe göre)                 |
+
+## 3. NVIC = Öncelik (Priority) Nasıl Ayarlanır?
+STM32F103'te sadece *preemption priority* kullanılır, *sub-priority* yoktur.
+
+### C Fonksiyonu ile
+NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority);
+
+### Örnek
+NVIC_SetPriority(EXTI0_IRQn, 0);
+NVIC_SetPriority(USART1_IRQn, 2);
+
+Burada; EXTI* kesmesi en yüksek öncelikli, USART1 daha düşük önceliğe sahiptir.
+
+## 4. Hangi Interrupt Aktif/Pasif
+### Aktifleştirme
+NVIC_EnableIRQ(EXTI0_IRQn); // EXTI0 kesmesi aktif hale gelir
+
+### Pasifleştirme
+NVIC_DisableIRQ(EXTI0_IRQn); // EXTI0 kesmesini devre dışı bırakır
+
+### Örnek = EXTI0 (PA0) Buton Kesmesi
+// 1. NVIC'te EXTI0 kesmesini aktif et
+NVIC_EnableIRQ(EXTI0_IRQn);
+
+// 2. Önceliği belirle
+NVIC_SetPriority(EXTI0_IRQn, 1);
+
+// 3. ISR fonksiyonunu tanımla
+void EXTI0_IRQHandler(void) // PA0 pini için kesme fonksiyonu
+{
+  if(EXTI->PR & (1 << 0)){
+    EXTI->PR |= (1 << 0); // kesme bayrağını temizle
+    // Butona basılmış, işlem yap
+  }
+}
+
+## 5. Önemli Notlar
+- NVIC ile her interrupt için ayrı ayrı kontrol ve öncelik tanımlanabilir.
+- NVıC olmadan kesme sistemi çalışmaz
+- NVIC kesmeleri maskeler, sıralar ve yönetir.
+- STM32'de CubeMX kullanıyorsan bu ayarı arka planda

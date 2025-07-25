@@ -122,4 +122,34 @@ void EXTI0_IRQHandler(void) // PA0 pini için kesme fonksiyonu
 - NVIC ile her interrupt için ayrı ayrı kontrol ve öncelik tanımlanabilir.
 - NVıC olmadan kesme sistemi çalışmaz
 - NVIC kesmeleri maskeler, sıralar ve yönetir.
-- STM32'de CubeMX kullanıyorsan bu ayarı arka planda
+- STM32'de CubeMX kullanıyorsan bu ayarı arka planda yapar ama manuel yazarken kontrol sende.
+
+## 6. User Manual'den
+### Özellikler
+- 16 programlanabilir öncelik seviyesi (4 bit kesme önceliği kullanılır)
+- Low-Latency exception ve interrupt jandling (Düşük gecikmeli istisna ve kesme işleme)
+- Power management control
+- Implementation of System Control register (Sistem kontrol register'larının uygulanması)
+
+NVIC ve processor (işlemci) core interface'i yakında bağlantılıdır, bu da low latency interrupt işlemine ve late arriving interrupt'ın verimli bir şekilde işlenmesine olanak tanır.
+
+Core exception'ları da dahil olmak üzere interrupt'lar NVIC tarafından yönetilir.
+
+## 7. NVIC Registerları
+Register  | Açıklama
+----------|-----------
+ISER      | Interrupt Set Enable Register (Kesmeyi aktif yapar)
+ICER      | Interrupt Clear Enable Register (Kesmeyi pasif yapar)
+ISPR      | Interrupt Set Pending Register (Kesmeyi beklemeye alır)
+ICPR      | Interrupt Clear Pending Register (Kesmeyi beklemeden çıkartır)
+IPR       | Interrupt Priority Register (Öncelik ayarlanır)
+
+## 8. NVIC Nerelerde Kullanılır
+Uygulama                      | Açıklama
+------------------------------|---------------------------------
+Buton kesmeleri (EXTI)        | GPIO pininden gelen sinyal
+USART veri alımı              | Veri geldiğinde kesme üretilir
+Timer kesmeleri               | Süre dolunca interrupt 
+ADC dönüşümü tamamlandığında  | Kesme ile haber verilir
+DMA transfer tamamlandığında  | NVIC üzerinden kesme gelir.
+    

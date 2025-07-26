@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;RegisterFirst&apos; to &apos;1_RegisterFirst&apos;" description="Rename resource &apos;RegisterFirst&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/RegisterFirst" name="1_RegisterFirst" stamp="1753121853291" updateReferences="true"/>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;RegisterFirst&apos; to &apos;1_RegisterFirst&apos;" description="Rename resource &apos;RegisterFirst&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/RegisterFirst" name="1_RegisterFirst" stamp="1753121853291" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;4__2_RegisterButtonInterrupt&apos; to &apos;4_2_RegisterButtonInterrupt&apos;" description="Rename resource &apos;4__2_RegisterButtonInterrupt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/4__2_RegisterButtonInterrupt" name="4_2_RegisterButtonInterrupt" stamp="1753548198348" updateReferences="true"/>
 </session>

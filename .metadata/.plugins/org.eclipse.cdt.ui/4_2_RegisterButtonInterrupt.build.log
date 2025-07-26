@@ -1,0 +1,10 @@
+19:59:37 **** Incremental Build of configuration Debug for project 4_2_RegisterButtonInterrupt ****
+make -j16 all 
+arm-none-eabi-size  4_2_RegisterButtonInterrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1020	      4	   1572	   2596	    a24	4_2_RegisterButtonInterrupt.elf
+Finished building: default.size.stdout
+ 
+
+19:59:37 Build Finished. 0 errors, 0 warnings. (took 143ms)
+

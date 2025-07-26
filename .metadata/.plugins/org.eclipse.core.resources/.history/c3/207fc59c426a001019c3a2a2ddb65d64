@@ -38,8 +38,8 @@ int main()
 	EXTI->IMR |= (1 << 5); // Interrupt mask aktif
 	EXTI->FTSR |= (1 << 5); // Falling edge trigger aktif
 
-	// 4.2. EXTI ayarları (EXTI9 için PA9)
-	AFIO->EXTICR[2] &= ~(0xF << 4); // EXTI9 için PA9 seçilir
+	// 4.2. EXTI ayarları (EXTI5 için PA9)
+	AFIO->EXTICR[2] &= ~(0xF << 4); // EXTI5 için PA9 seçilir
 
 	EXTI->IMR |= (1 << 9); // Interrupt mask aktif
 	EXTI->FTSR |= (1 << 9); // Falling edge trigger aktif

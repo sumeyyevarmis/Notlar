@@ -22037,3 +22037,7 @@ java.lang.NullPointerException: Cannot invoke "javax.swing.JTextField.getText()"
 2025-07-26 20:00:39,747 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
 2025-07-26 20:00:40,745 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
 2025-07-26 20:00:40,745 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-07-26 20:00:41,732 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2025-07-26 20:00:41,732 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-07-26 20:00:42,731 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :1:1: Premature end of file.
+2025-07-26 20:00:42,731 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 

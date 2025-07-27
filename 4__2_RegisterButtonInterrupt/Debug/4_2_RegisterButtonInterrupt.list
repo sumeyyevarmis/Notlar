@@ -261,8 +261,8 @@ int main()
  800027a:	f043 0320 	orr.w	r3, r3, #32
  800027e:	60d3      	str	r3, [r2, #12]
 
-	// 4.2. EXTI ayarları (EXTI5 için PA9)
-	AFIO->EXTICR[2] &= ~(0xF << 4); // EXTI5 için PA9 seçilir
+	// 4.2. EXTI ayarları (EXTI9 için PA9)
+	AFIO->EXTICR[2] &= ~(0xF << 4); // EXTI9 için PA9 seçilir
  8000280:	4b0d      	ldr	r3, [pc, #52]	@ (80002b8 <main+0xd8>)
  8000282:	691b      	ldr	r3, [r3, #16]
  8000284:	4a0c      	ldr	r2, [pc, #48]	@ (80002b8 <main+0xd8>)

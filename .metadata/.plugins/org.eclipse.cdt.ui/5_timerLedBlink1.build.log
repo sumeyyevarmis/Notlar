@@ -1,0 +1,10 @@
+14:43:39 **** Incremental Build of configuration Debug for project 5_timerLedBlink1 ****
+make -j16 all 
+arm-none-eabi-size  5_timerLedBlink1.elf 
+   text	   data	    bss	    dec	    hex	filename
+    796	      4	   1572	   2372	    944	5_timerLedBlink1.elf
+Finished building: default.size.stdout
+ 
+
+14:43:40 Build Finished. 0 errors, 0 warnings. (took 132ms)
+

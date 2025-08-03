@@ -1,0 +1,28 @@
+#include "main.h"
+
+int main()
+{
+	// Clock enable (Tim2 - GPIOA)
+	RCC->APB1ENR |= (1 << 0); // TIM2
+	RCC->APB2ENR |= (1 << 2); // GPIOA
+
+	// GPIOA Output
+	GPIOA->CRL &= ~(0xF << 28) ; // PA7
+	GPIOA->CRL |= (0b0010 << 28);
+
+	// Timer
+	TIM2->PSC = 5000 - 1; // 16 MHz / 16000 = 1 kHz (1 ms)
+	TIM2->ARR = 1000 - 1; // 1ms * 1000 = 1 saniye
+	TIM2->CNT = 0; // Counter = 0
+	TIM2->CR1 |= TIM_CR1_CEN; // (1 << 0) => Timer başlat
+
+	while(1){
+		// Zaman doldumu kontrol et
+		if(TIM2->SR & (1 << 0)){ // TIM_SR_UIF
+			TIM2->SR &= ~(0xF << 0);//TIM_SR_UIF; // Flag temizle
+
+			// Led toggel
+			GPIOA->ODR ^= (1 << 7);
+		}
+	}
+}

@@ -11,8 +11,8 @@ int main()
 	GPIOA->CRL |= (0b0010 << 28);
 
 	// Timer
-	TIM2->PSC = 7200  - 1; // 16 MHz / 16000 = 1 kHz (1 ms)
-	TIM2->ARR = 1000  - 1; // 1ms * 1000 = 1 saniye
+	TIM2->PSC = 8000  - 1; // 8 MHz / 8000 = 1 kHz (1 ms)
+	TIM2->ARR = 2000  - 1; // 1ms * 1000 = 1 saniye
 	TIM2->CNT = 0; // Counter = 0
 	TIM2->CR1 |= TIM_CR1_CEN; // (1 << 0) => Timer başlat
 

@@ -1,0 +1,10 @@
+18:39:05 **** Incremental Build of configuration Debug for project 5_3_TimerOutputCompare1 ****
+make -j16 all 
+arm-none-eabi-size  5_3_TimerOutputCompare1.elf 
+   text	   data	    bss	    dec	    hex	filename
+    992	      4	   1572	   2568	    a08	5_3_TimerOutputCompare1.elf
+Finished building: default.size.stdout
+ 
+
+18:39:05 Build Finished. 0 errors, 0 warnings. (took 137ms)
+

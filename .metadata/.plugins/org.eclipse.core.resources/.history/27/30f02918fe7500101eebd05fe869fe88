@@ -1,0 +1,31 @@
+#include "main.h"
+
+
+void GPIOset(){
+
+	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+
+	GPIOA->CRL &= ~(GPIO_CRL_MODE0 | GPIO_CRL_CNF0);
+
+	GPIOA->CRL |= (0x02 << GPIO_CRL_MODE0_Pos); // Output 2 MHz
+	GPIOA->CRL |= (0x00 << GPIO_CRL_CNF0_Pos);  // Push-pull
+}
+
+void TIMset(){
+
+	RCC->APB1ENR |= RCC_APB1ENR_TIM2EN; // TIM2 clock
+	TIM2->PSC = 7199;                   // 10 kHz
+	TIM2->ARR = 10000;                   // (Tam periyot için, ama burada gerekmez)
+	TIM2->CCR1 = 5000;                   // Compare match değeri
+
+
+	// 3) OC1 Toggle modu
+	TIM2->CCMR1 &= ~TIM_CCMR1_OC1M;
+	TIM2->CCMR1 |= (0x3 << TIM_CCMR1_OC1M_Pos); // Toggle mode
+	TIM2->CCER |= TIM_CCER_CC1E;               // CH1 enable
+
+}
+
+int main(){
+
+}

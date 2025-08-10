@@ -1,21 +1,21 @@
-14:43:36 **** Incremental Build of configuration Debug for project 5_timerLedBlink1 ****
+18:39:02 **** Incremental Build of configuration Debug for project 5_3_TimerOutputCompare1 ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "5_timerLedBlink1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\sumey\STM32CubeIDE\workspace_1.19.0\5_timerLedBlink1\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="5_timerLedBlink1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: 5_timerLedBlink1.elf
+arm-none-eabi-gcc -o "5_3_TimerOutputCompare1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\sumey\STM32CubeIDE\workspace_1.19.0\5_3_TimerOutputCompare1\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="5_3_TimerOutputCompare1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 5_3_TimerOutputCompare1.elf
  
-arm-none-eabi-size  5_timerLedBlink1.elf 
-arm-none-eabi-objdump -h -S 5_timerLedBlink1.elf  > "5_timerLedBlink1.list"
+arm-none-eabi-size  5_3_TimerOutputCompare1.elf 
+arm-none-eabi-objdump -h -S 5_3_TimerOutputCompare1.elf  > "5_3_TimerOutputCompare1.list"
    text	   data	    bss	    dec	    hex	filename
-    796	      4	   1572	   2372	    944	5_timerLedBlink1.elf
+    992	      4	   1572	   2568	    a08	5_3_TimerOutputCompare1.elf
 Finished building: default.size.stdout
  
-Finished building: 5_timerLedBlink1.list
+Finished building: 5_3_TimerOutputCompare1.list
  
-14:43:39 **** Incremental Build of configuration Debug for project 5_timerLedBlink1 ****
+18:39:05 **** Incremental Build of configuration Debug for project 5_3_TimerOutputCompare1 ****
 make -j16 all 
-arm-none-eabi-size  5_timerLedBlink1.elf 
+arm-none-eabi-size  5_3_TimerOutputCompare1.elf 
    text	   data	    bss	    dec	    hex	filename
-    796	      4	   1572	   2372	    944	5_timerLedBlink1.elf
+    992	      4	   1572	   2568	    a08	5_3_TimerOutputCompare1.elf
 Finished building: default.size.stdout
  

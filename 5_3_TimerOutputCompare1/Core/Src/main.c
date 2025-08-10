@@ -1,0 +1,46 @@
+#include "main.h"
+
+
+void GPIOset(){
+
+	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+
+	GPIOA->CRL &= ~(GPIO_CRL_MODE7 | GPIO_CRL_CNF7);
+
+	GPIOA->CRL |= (0x02 << GPIO_CRL_MODE7_Pos); // Output 2 MHz
+	GPIOA->CRL |= (0x00 << GPIO_CRL_CNF7_Pos);  // Push-pull
+}
+
+void TIMset(){
+
+	RCC->APB1ENR |= RCC_APB1ENR_TIM2EN; // TIM2 clock
+	TIM2->PSC = 7199;                   // 10 kHz
+	TIM2->ARR = 10000;                   // (Tam periyot için, ama burada gerekmez)
+	TIM2->CCR1 = 5000;                   // Compare match değeri
+
+
+	// OC1 Toggle modu
+	TIM2->CCMR1 &= ~TIM_CCMR1_OC1M;
+	TIM2->CCMR1 |= (0x3 << TIM_CCMR1_OC1M_Pos); // Toggle mode
+	TIM2->CCER |= TIM_CCER_CC1E;               // CH1 enable
+
+}
+void TIM2_IRQHandler(void) {
+    if (TIM2->SR & TIM_SR_CC1IF) {
+        TIM2->SR &= ~TIM_SR_CC1IF; // Bayrak temizle
+        GPIOA->ODR ^= (1 << 7);
+    }
+}
+int main(){
+	GPIOset();
+	TIMset();
+	// Compare interrupt açma
+	TIM2->DIER |= TIM_DIER_CC1IE;
+	NVIC_EnableIRQ(TIM2_IRQn);
+
+	TIM2->CR1 |= TIM_CR1_CEN;
+
+	while(1){
+
+	}
+}

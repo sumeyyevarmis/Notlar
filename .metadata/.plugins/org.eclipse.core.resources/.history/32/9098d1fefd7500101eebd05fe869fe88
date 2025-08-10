@@ -1,0 +1,17 @@
+#include "main.h"
+
+
+void GPIOset(){
+
+	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+
+	GPIOA->CRL &= ~(GPIO_CRL_MODE0 | GPIO_CRL_CNF0);
+
+	GPIOA->CRL |= (0x02 << GPIO_CRL_MODE0_Pos); // Output 2 MHz
+	GPIOA->CRL |= (0x00 << GPIO_CRL_CNF0_Pos);  // Push-pull
+}
+
+
+int main(){
+
+}

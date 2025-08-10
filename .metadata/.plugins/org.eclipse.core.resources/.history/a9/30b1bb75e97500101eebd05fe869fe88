@@ -1,0 +1,16 @@
+#include "main.h"
+
+void GPIOset(){
+	RCC->APB2ENR |= (1 << 2); // GPIOA
+
+	// GPIOA Output
+	GPIOA->CRL &= ~(0xF << 28) ; // PA7
+	GPIOA->CRL |= (0b0010 << 28);
+
+}
+
+
+int main(){
+	GPIOset();
+
+}

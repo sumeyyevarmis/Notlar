@@ -456,6 +456,7 @@ Bu durumda:
 - **PWM Mode 2** -> CCR değeri altında Low, üzerinde High
 
 Genelde PWM Mode 1 kullanılır.
+<<<<<<< HEAD
 
 ## Kod
 
@@ -518,3 +519,5 @@ Genelde PWM Mode 1 kullanılır.
     }
 
 # Input Capture (IC)
+=======
+>>>>>>> cdec525d867d3ee4f6b8c89933408f31502f280c

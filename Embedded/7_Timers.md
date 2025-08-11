@@ -79,6 +79,8 @@ Kullanılacak registerlar:
         }
     }
 
+Date: 10-08-2025
+Day: 28
 
 ## 6. PSC(Prescaler) ve ARR(Auto Reload Register) Neye Göre Belirlenir?
 **Genel Mantık:**
@@ -409,6 +411,10 @@ Frekans = 1 / 9 saniye = 0.11 Hz
 
 
 # PWM
+
+Date: 11-08-2025
+Day: 29
+
 ## 1. PWM Mantığı
 PWM sinyali, kare dalga gibi görünür ama High (on) süresi ile Low (off) süresi ayarlanabilir.
 
@@ -450,3 +456,65 @@ Bu durumda:
 - **PWM Mode 2** -> CCR değeri altında Low, üzerinde High
 
 Genelde PWM Mode 1 kullanılır.
+
+## Kod
+
+    #include "main.h"
+
+
+    void GPIO_PWM_Init(void) {
+        // GPIOA Clock enable
+        RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+
+        // PA6 = TIM3_CH1 (Alternate Function Push-Pull, 50 MHz)
+        GPIOA->CRL &= ~(0xF << (6 * 4));   // PA6 temizle
+        GPIOA->CRL |=  (0xB << (6 * 4));   // 0xB = AF Push-Pull, 50 MHz
+    }
+
+    void TIM3_PWM_Init(void) {
+        // TIM3 Clock enable
+        RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
+
+        // Timer frekans ayarı
+        TIM3->PSC = 8 - 1;     // Timer clock = 72 MHz / 72 = 1 MHz
+        TIM3->ARR = 1000 - 1;   // Periyot = 1 kHz PWM (1 MHz / 1000)
+
+        // PWM1 modu (OC1M = 110)
+        TIM3->CCMR1 &= ~TIM_CCMR1_OC1M;
+        TIM3->CCMR1 |= (6 << TIM_CCMR1_OC1M_Pos);
+        TIM3->CCMR1 |= TIM_CCMR1_OC1PE; // Preload enable
+
+        // Kanal 1 enable
+        TIM3->CCER |= TIM_CCER_CC1E;
+
+        // Başlangıç duty cycle (%50)
+        TIM3->CCR1 = 500;
+
+        // Timer enable
+        TIM3->CR1 |= TIM_CR1_CEN;
+    }
+
+    void delay_ms(uint32_t ms) {
+        // Basit yazılım gecikmesi (SysTick kullanılabilir)
+        for(uint32_t i = 0; i < ms * 8000; i++) {
+            __NOP();
+        }
+    }
+
+    int main(void) {
+        GPIO_PWM_Init();
+        TIM3_PWM_Init();
+
+        while (1) {
+            TIM3->CCR1 = 0; // %25 duty
+            delay_ms(100);
+
+            TIM3->CCR1 = 250; // %50 duty
+            delay_ms(100);
+
+            TIM3->CCR1 = 999; // %75 duty
+            delay_ms(100);
+        }
+    }
+
+# Input Capture (IC)

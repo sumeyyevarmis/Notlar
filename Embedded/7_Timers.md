@@ -79,6 +79,8 @@ Kullanılacak registerlar:
         }
     }
 
+Date: 10-08-2025
+Day: 28
 
 ## 6. PSC(Prescaler) ve ARR(Auto Reload Register) Neye Göre Belirlenir?
 **Genel Mantık:**
@@ -409,6 +411,10 @@ Frekans = 1 / 9 saniye = 0.11 Hz
 
 
 # PWM
+
+Date: 11-08-2025
+Day: 29
+
 ## 1. PWM Mantığı
 PWM sinyali, kare dalga gibi görünür ama High (on) süresi ile Low (off) süresi ayarlanabilir.
 

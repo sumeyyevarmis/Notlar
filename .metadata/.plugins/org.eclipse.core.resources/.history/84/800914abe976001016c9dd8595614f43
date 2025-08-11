@@ -1,0 +1,16 @@
+#include "main.h"
+
+void GPIO_PWM_Init(void) {
+    // GPIOA Clock enable
+    RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+
+    // PA6 = TIM3_CH1 (Alternate Function Push-Pull, 50 MHz)
+    GPIOA->CRL &= ~(0xF << (6 * 4));   // PA6 temizle
+    GPIOA->CRL |=  (0xB << (6 * 4));   // 0xB = AF Push-Pull, 50 MHz
+}
+
+
+
+int main(void) {
+
+}

@@ -1,0 +1,51 @@
+#include "main.h"
+
+
+void GPIO_Config(void);
+void TIM2_PWM_Config(void);
+
+int main(void)
+{
+    GPIO_Config();
+    TIM2_PWM_Config();
+
+    uint16_t duty = 0; // Başlangıç duty cycle
+    while (1)
+    {
+        duty++;
+        if (duty > 999) duty = 0; // Max duty cycle %100
+        TIM2->CCR1 = duty;        // PWM duty ayarla
+
+        for (volatile uint32_t i = 0; i < 5000; i++); // Gözle görülür yavaş artış için gecikme
+    }
+}
+
+void GPIO_Config(void)
+{
+    RCC->APB2ENR |= RCC_APB2ENR_IOPAEN; // GPIOA clock enable
+
+    // PA0 -> Alternate Function Push-Pull, 50 MHz
+    GPIOA->CRL &= ~(GPIO_CRL_MODE0 | GPIO_CRL_CNF0);
+    GPIOA->CRL |= GPIO_CRL_MODE0_1 | GPIO_CRL_MODE0_0; // Output mode 50 MHz
+    GPIOA->CRL |= GPIO_CRL_CNF0_1; // AF push-pull
+}
+
+void TIM2_PWM_Config(void)
+{
+    RCC->APB1ENR |= RCC_APB1ENR_TIM2EN; // TIM2 clock enable
+
+    TIM2->PSC = 8 - 1;      // Prescaler -> 8 MHz / 8 = 1 MHz
+    TIM2->ARR = 1000 - 1;   // Auto-reload -> 1 MHz / 1000 = 1 kHz PWM frekansı
+
+    TIM2->CCR1 = 0;         // Başlangıç duty cycle %0
+
+    TIM2->CCMR1 &= ~TIM_CCMR1_OC1M;
+    TIM2->CCMR1 |= (6 << TIM_CCMR1_OC1M_Pos); // PWM mode 1
+    TIM2->CCMR1 |= TIM_CCMR1_OC1PE;           // Preload enable
+
+    TIM2->CCER |= TIM_CCER_CC1E; // CH1 enable
+
+    TIM2->CR1 |= TIM_CR1_ARPE;   // Auto-reload preload enable
+    TIM2->EGR |= TIM_EGR_UG;     // Update event
+    TIM2->CR1 |= TIM_CR1_CEN;    // Timer enable
+}

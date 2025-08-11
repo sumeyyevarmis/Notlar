@@ -1,4 +1,4 @@
-11:38:13 **** Incremental Build of configuration Debug for project 4_3_RegisterButtonsLedsRInterrupt ****
+22:38:30 **** Build of configuration Debug for project 4_3_RegisterButtonsLedsRInterrupt ****
 make -j16 all 
 arm-none-eabi-size  4_3_RegisterButtonsLedsRInterrupt.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  4_3_RegisterButtonsLedsRInterrupt.elf
 Finished building: default.size.stdout
  
 
-11:38:14 Build Finished. 0 errors, 0 warnings. (took 478ms)
+22:38:31 Build Finished. 0 errors, 0 warnings. (took 306ms)
 

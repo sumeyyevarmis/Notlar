@@ -1,4 +1,4 @@
-21:45:16 **** Incremental Build of configuration Debug for project 1_RegisterFirst ****
+22:38:29 **** Build of configuration Debug for project 1_RegisterFirst ****
 make -j16 all 
 arm-none-eabi-size  1_RegisterFirst.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  1_RegisterFirst.elf
 Finished building: default.size.stdout
  
 
-21:45:16 Build Finished. 0 errors, 0 warnings. (took 311ms)
+22:38:29 Build Finished. 0 errors, 0 warnings. (took 335ms)
 

@@ -1,4 +1,4 @@
-10:45:27 **** Incremental Build of configuration Debug for project 2_RegisterLedBlink ****
+22:38:29 **** Build of configuration Debug for project 2_RegisterLedBlink ****
 make -j16 all 
 arm-none-eabi-size  2_RegisterLedBlink.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  2_RegisterLedBlink.elf
 Finished building: default.size.stdout
  
 
-10:45:28 Build Finished. 0 errors, 0 warnings. (took 201ms)
+22:38:29 Build Finished. 0 errors, 0 warnings. (took 310ms)
 

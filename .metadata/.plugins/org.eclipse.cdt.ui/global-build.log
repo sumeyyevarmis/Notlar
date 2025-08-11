@@ -1,21 +1,105 @@
-18:39:02 **** Incremental Build of configuration Debug for project 5_3_TimerOutputCompare1 ****
+22:37:29 **** Incremental Build of configuration Debug for project 5_5_TimerPWMButton1 ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "5_3_TimerOutputCompare1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\sumey\STM32CubeIDE\workspace_1.19.0\5_3_TimerOutputCompare1\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="5_3_TimerOutputCompare1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: 5_3_TimerOutputCompare1.elf
+arm-none-eabi-gcc -o "5_5_TimerPWMButton1.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\sumey\STM32CubeIDE\workspace_1.19.0\5_5_TimerPWMButton1\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="5_5_TimerPWMButton1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 5_5_TimerPWMButton1.elf
  
+arm-none-eabi-size  5_5_TimerPWMButton1.elf 
+arm-none-eabi-objdump -h -S 5_5_TimerPWMButton1.elf  > "5_5_TimerPWMButton1.list"
+   text	   data	    bss	    dec	    hex	filename
+   1088	      4	   1572	   2664	    a68	5_5_TimerPWMButton1.elf
+Finished building: default.size.stdout
+ 
+Finished building: 5_5_TimerPWMButton1.list
+ 
+22:37:34 **** Incremental Build of configuration Debug for project 5_5_TimerPWMButton1 ****
+make -j16 all 
+arm-none-eabi-size  5_5_TimerPWMButton1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1088	      4	   1572	   2664	    a68	5_5_TimerPWMButton1.elf
+Finished building: default.size.stdout
+ 
+22:38:29 **** Build of configuration Debug for project 1_RegisterFirst ****
+make -j16 all 
+arm-none-eabi-size  1_RegisterFirst.elf 
+   text	   data	    bss	    dec	    hex	filename
+    764	      4	   1572	   2340	    924	1_RegisterFirst.elf
+Finished building: default.size.stdout
+ 
+22:38:29 **** Build of configuration Debug for project 2_RegisterLedBlink ****
+make -j16 all 
+arm-none-eabi-size  2_RegisterLedBlink.elf 
+   text	   data	    bss	    dec	    hex	filename
+    772	      4	   1572	   2348	    92c	2_RegisterLedBlink.elf
+Finished building: default.size.stdout
+ 
+22:38:30 **** Build of configuration Debug for project 3_RegisterButtonLed ****
+make -j16 all 
+arm-none-eabi-size  3_RegisterButtonLed.elf 
+   text	   data	    bss	    dec	    hex	filename
+    768	      4	   1572	   2344	    928	3_RegisterButtonLed.elf
+Finished building: default.size.stdout
+ 
+22:38:30 **** Build of configuration Debug for project 4_2_RegisterButtonInterrupt ****
+make -j16 all 
+arm-none-eabi-size  4_2_RegisterButtonInterrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1020	      4	   1572	   2596	    a24	4_2_RegisterButtonInterrupt.elf
+Finished building: default.size.stdout
+ 
+22:38:30 **** Build of configuration Debug for project 4_3_RegisterButtonsLedsRInterrupt ****
+make -j16 all 
+arm-none-eabi-size  4_3_RegisterButtonsLedsRInterrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1108	      4	   1572	   2684	    a7c	4_3_RegisterButtonsLedsRInterrupt.elf
+Finished building: default.size.stdout
+ 
+22:38:31 **** Build of configuration Debug for project 4_RegisterButtonInterrupt ****
+make -j16 all 
+arm-none-eabi-size  4_RegisterButtonInterrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+    912	      4	   1572	   2488	    9b8	4_RegisterButtonInterrupt.elf
+Finished building: default.size.stdout
+ 
+22:38:31 **** Build of configuration Debug for project 5_1TimerBlink2 ****
+make -j16 all 
+arm-none-eabi-size  5_1TimerBlink2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   6884	     12	   1644	   8540	   215c	5_1TimerBlink2.elf
+Finished building: default.size.stdout
+ 
+22:38:32 **** Build of configuration Debug for project 5_2_TimerInterruptLedBlink1 ****
+make -j16 all 
+arm-none-eabi-size  5_2_TimerInterruptLedBlink1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1320	      4	   1572	   2896	    b50	5_2_TimerInterruptLedBlink1.elf
+Finished building: default.size.stdout
+ 
+22:38:32 **** Build of configuration Debug for project 5_3_TimerOutputCompare1 ****
+make -j16 all 
 arm-none-eabi-size  5_3_TimerOutputCompare1.elf 
-arm-none-eabi-objdump -h -S 5_3_TimerOutputCompare1.elf  > "5_3_TimerOutputCompare1.list"
    text	   data	    bss	    dec	    hex	filename
     992	      4	   1572	   2568	    a08	5_3_TimerOutputCompare1.elf
 Finished building: default.size.stdout
  
-Finished building: 5_3_TimerOutputCompare1.list
- 
-18:39:05 **** Incremental Build of configuration Debug for project 5_3_TimerOutputCompare1 ****
+22:38:32 **** Incremental Build of configuration Debug for project 5_4_TimerPWM1 ****
 make -j16 all 
-arm-none-eabi-size  5_3_TimerOutputCompare1.elf 
+arm-none-eabi-size  5_4_TimerPWM1.elf 
    text	   data	    bss	    dec	    hex	filename
-    992	      4	   1572	   2568	    a08	5_3_TimerOutputCompare1.elf
+    932	      4	   1572	   2508	    9cc	5_4_TimerPWM1.elf
+Finished building: default.size.stdout
+ 
+22:38:33 **** Incremental Build of configuration Debug for project 5_5_TimerPWMButton1 ****
+make -j16 all 
+arm-none-eabi-size  5_5_TimerPWMButton1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1088	      4	   1572	   2664	    a68	5_5_TimerPWMButton1.elf
+Finished building: default.size.stdout
+ 
+22:38:33 **** Build of configuration Debug for project 5_timerLedBlink1 ****
+make -j16 all 
+arm-none-eabi-size  5_timerLedBlink1.elf 
+   text	   data	    bss	    dec	    hex	filename
+    796	      4	   1572	   2372	    944	5_timerLedBlink1.elf
 Finished building: default.size.stdout
  

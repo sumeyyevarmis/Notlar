@@ -409,3 +409,44 @@ Frekans = 1 / 9 saniye = 0.11 Hz
 
 
 # PWM
+## 1. PWM Mantığı
+PWM sinyali, kare dalga gibi görünür ama High (on) süresi ile Low (off) süresi ayarlanabilir.
+
+**Duty Cycle =** High süresinin toplam periyoda oranıdır.
+
+Duty Cycle (%) = (CCR / ARR + 1) * 100
+
+## 2. ARR ile Frekans Hesabı
+Timer frekansı:
+
+ftimer = fclock / (PSC + 1)
+
+PWM frekansı:
+
+fpwm = ftimer / (ARR + 1)
+
+**Örnek**
+APB1 Timer clock = 8 MHz
+
+Hedef PWM frekansı = 1 kHz
+1. PSC seçimi:
+PSC = 7 -> Timer frekansı = 8 MHz / (7+1) = 1 MHz
+
+2. ARR seçimi:
+ARR = (1 MHz / 1 kHz) - 1 = 1000 - 1 = 999
+
+Bu durumda:
+- Periyot = (ARR + 1) * 1 us = 1000 us = 1 ms
+- PWM frekansı = 1 kHz
+
+## 3. CCR ile Duty Cycle Ayarı
+
+- **Duty %25:** CCR = 0.25 * (ARR + 1) = 0.25 * 1000 = 250
+- **Duty %50:** CCR = 0.50 * (ARR + 1) = 0.50 * 1000 = 500
+- **Duty %75:** CCR = 0.75 * (ARR + 1) = 0.75 * 1000 = 750
+
+## 4. PWM Modları (CCMRx OCxM bits)
+- **PWM Mode 1** -> CCR değeri altında High, üzerinde Low
+- **PWM Mode 2** -> CCR değeri altında Low, üzerinde High
+
+Genelde PWM Mode 1 kullanılır.

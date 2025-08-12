@@ -456,7 +456,6 @@ Bu durumda:
 - **PWM Mode 2** -> CCR değeri altında Low, üzerinde High
 
 Genelde PWM Mode 1 kullanılır.
-<<<<<<< HEAD
 
 ## Kod
 
@@ -518,6 +517,49 @@ Genelde PWM Mode 1 kullanılır.
         }
     }
 
+
 # Input Capture (IC)
-=======
->>>>>>> cdec525d867d3ee4f6b8c89933408f31502f280c
+Date: 12-08-2025
+Day: 30
+## 1. IC Modunun Çalışma Mantığı
+- Timer normalde kendi clock'una göre sayar (PSC ve ARR ile belirlenir).
+- IC modunda, belirli bir kenar geldiğinde - Rising veya Falling - o anki counter değeri (CNT) bir yakalama register'ına (CCRx) kopyalanır.
+- İki kenar arasındaki fark, sinyalin periyodu veya yüksek süre uzunluğunu verir.
+
+Örneğin:
+- Timer 1 µs çözünürlükte sayıyor.
+- İlk Rising edge geldi → CCR1 = 1500 (yani 1500 µs).
+- İkinci Rising edge geldi → CCR1 = 4500 (yani 4500 µs).
+- Fark = 3000 µs → sinyalin periyodu.
+
+## 2. Rising ve Falling Edge
+
+- Rising → 0’dan 1’e geçiş anı (buton basışı, sinyal başlama anı)
+- Falling → 1’den 0’a geçiş anı (buton bırakma, sinyal bitiş anı)
+- Mesela butona basılma süresini ölçmek için:
+    - Rising → başlama zamanı
+    - Falling → bitiş zamanı
+    - Aradaki fark → basılı kalma süresi.
+
+## 3. Kullanım Senaryosu
+- Buton basılma süresi ölçme
+- PWM sinyal frekansı ölçme
+- Ultrasonik sensör (HC-SR04) ile mesafe ölçme
+
+## 4. STM32’de Adımlar
+- Timer’ı Input Capture moduna al
+    - CCMR register → CCxS alanını 01 yaparak giriş seç.
+
+- Hangi kenarı yakalayacağını seç
+    - CCER register → Rising (CCxP = 0) veya Falling (CCxP = 1).
+
+- Prescaler ve ARR ayarla
+    - Ölçmek istediğin süre aralığına göre çözünürlük belirle.
+
+- CCRx değerlerini oku
+    - İlk tetikleme: Start time
+    - İkinci tetikleme: End time
+    - Fark → Süre (clock periyot × fark).
+
+- Timer interrupt aç
+    - Capture olayını yakalayabilmek için.

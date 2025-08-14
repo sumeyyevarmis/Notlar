@@ -1,0 +1,10 @@
+22:24:34 **** Incremental Build of configuration Debug for project 6_1AdcRegister ****
+make -j16 all 
+arm-none-eabi-size  6_1AdcRegister.elf 
+   text	   data	    bss	    dec	    hex	filename
+    936	      4	   1572	   2512	    9d0	6_1AdcRegister.elf
+Finished building: default.size.stdout
+ 
+
+22:24:34 Build Finished. 0 errors, 0 warnings. (took 133ms)
+

@@ -1,0 +1,3 @@
+../Core/Src/main.c:3:6:ADC1_Init	3
+../Core/Src/main.c:32:10:ADC1_Read	2
+../Core/Src/main.c:41:5:main	2

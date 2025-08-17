@@ -52,7 +52,7 @@ STM32 mikrodenetleyicilerde ADC modülleri genelde 12 bit çözünürlüktedir (
 ## 6. DMA Desteği
 - ADC verileri DMA ile otomatik belleğe aktarılabilir, böylece işlemci boşta kalır.
 
-# ADC Çalışma Süreci STM32'de Özet
+## ADC Çalışma Süreci STM32'de Özet
 1. ADC modülünü aktif et.
 2. Giriş kanalı seçilir.
 3. Referans voltaj ayarlanır (genellikle Vdd)

@@ -1,0 +1,10 @@
+21:28:57 **** Incremental Build of configuration Debug for project 6_3AdcHal2Led ****
+make -j16 all 
+arm-none-eabi-size  6_3AdcHal2Led.elf 
+   text	   data	    bss	    dec	    hex	filename
+  10952	     12	   1692	  12656	   3170	6_3AdcHal2Led.elf
+Finished building: default.size.stdout
+ 
+
+21:28:57 Build Finished. 0 errors, 0 warnings. (took 137ms)
+

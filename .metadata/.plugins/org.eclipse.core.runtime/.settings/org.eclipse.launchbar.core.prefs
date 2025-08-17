@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:RegisterFirst Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:3_RegisterButtonLed Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:4_RegisterButtonInterrupt,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:2_RegisterLedBlink,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:4_2_RegisterButtonInterrupt,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:4_3_RegisterButtonsLedsRInterrupt,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_1TimerBlink2,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_2_TimerInterruptLedBlink1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_3_TimerOutputCompare1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_4_TimerPWM1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_5_TimerPWMButton1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_timerLedBlink1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:6_1AdcRegister,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:6_adc1
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:RegisterFirst Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:3_RegisterButtonLed Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:4_RegisterButtonInterrupt,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:2_RegisterLedBlink,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:4_2_RegisterButtonInterrupt,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:4_3_RegisterButtonsLedsRInterrupt,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_1TimerBlink2,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_2_TimerInterruptLedBlink1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_3_TimerOutputCompare1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_4_TimerPWM1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_5_TimerPWMButton1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_timerLedBlink1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:6_1AdcRegister,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:6_2AdcHal1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:6_3AdcHal2Led,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:7_1_UART1
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:2_RegisterLedBlink/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:2_RegisterLedBlink/activeLaunchTarget=null\:---
@@ -13,6 +13,8 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_2_TimerInterruptLedBlink1/act
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_4_TimerPWM1/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:5_timerLedBlink1/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:6_1AdcRegister/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:6_2AdcHal1/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:6_3AdcHal2Led/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:6_adc1/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:RegisterFirst\ Debug/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:RegisterFirst\ Debug/activeLaunchTarget=null\:---

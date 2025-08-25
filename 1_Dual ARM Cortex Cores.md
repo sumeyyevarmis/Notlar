@@ -73,3 +73,13 @@ It is the memory on which the computer works currently. It is small in size and 
 It is external memory that is not as fast as the main memory but data stays permanently in this memory.
 
 ### d. Advantages
+- Cache Memory is faster in comparison to mian memory and secondary memory.
+- Programs stored by Cache Memory can be executed in less time.
+- The data access time of Cache Memory is less than that of main memory.
+- Cache Memory stored data and insturctions that are regularly used by the CPU, therefore it increases the performance of the CPU.
+
+### e. Disadvantages
+- Cache Memory is costlier than primary memory and secondary memory.
+- Data is stored on temporary basis in Cache Memory.
+- Whenever the system turned off, data and instructions stored in cache memory get destroyed.
+- The high cost of cache memory increases the price of the Computer System.

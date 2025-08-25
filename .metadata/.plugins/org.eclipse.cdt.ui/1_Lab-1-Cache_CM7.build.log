@@ -1,0 +1,10 @@
+21:49:44 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12836	   4112	   1568	  18516	   4854	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+
+21:49:45 Build Finished. 0 errors, 0 warnings. (took 263ms)
+

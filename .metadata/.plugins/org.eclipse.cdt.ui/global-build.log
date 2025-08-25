@@ -1,0 +1,498 @@
+21:16:44 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  48256	     16	  41568	  89840	  15ef0	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+21:16:47 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:16:47 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  48256	     16	  41568	  89840	  15ef0	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+21:16:53 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:16:53 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  48256	     16	  41568	  89840	  15ef0	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+21:17:07 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:18:23 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:18:24 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DCORE_CM7 -DUSE_HAL_DRIVER -DSTM32H745xx -DUSE_PWR_DIRECT_SMPS_SUPPLY -c -I../Core/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:181:13: warning: unused variable 'cycles' [-Wunused-variable]
+  181 |    uint32_t cycles = end - start;
+      |             ^~~~~~
+arm-none-eabi-gcc -o "1_Lab-1-Cache_CM7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\sumey\STM32CubeIDE\workspace_stm32H7\1_Lab-1-Cache\CM7\STM32H745ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_Lab-1-Cache_CM7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_Lab-1-Cache_CM7.elf
+ 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+arm-none-eabi-objdump -h -S 1_Lab-1-Cache_CM7.elf  > "1_Lab-1-Cache_CM7.list"
+   text	   data	    bss	    dec	    hex	filename
+  48216	     16	   1568	  49800	   c288	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_Lab-1-Cache_CM7.list
+ 
+21:18:30 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:18:30 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  48216	     16	   1568	  49800	   c288	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+21:18:51 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:27:14 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:27:15 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DCORE_CM7 -DUSE_HAL_DRIVER -DSTM32H745xx -DUSE_PWR_DIRECT_SMPS_SUPPLY -c -I../Core/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:209:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  209 |  printf("=== CACHE ACIK ===\n");
+      |  ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:209:2: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  209 |  printf("=== CACHE ACIK ===\n");
+      |  ^~~~~~
+../Core/Src/main.c:209:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "1_Lab-1-Cache_CM7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\sumey\STM32CubeIDE\workspace_stm32H7\1_Lab-1-Cache\CM7\STM32H745ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_Lab-1-Cache_CM7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_Lab-1-Cache_CM7.elf
+ 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+arm-none-eabi-objdump -h -S 1_Lab-1-Cache_CM7.elf  > "1_Lab-1-Cache_CM7.list"
+   text	   data	    bss	    dec	    hex	filename
+  17296	   4204	   1908	  23408	   5b70	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_Lab-1-Cache_CM7.list
+ 
+21:27:22 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:27:22 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17296	   4204	   1908	  23408	   5b70	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+21:27:43 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:29:05 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:29:06 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DCORE_CM7 -DUSE_HAL_DRIVER -DSTM32H745xx -DUSE_PWR_DIRECT_SMPS_SUPPLY -c -I../Core/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:127:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  127 |     printf("=== CACHE ACIK ===\n");
+      |     ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:127:5: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  127 |     printf("=== CACHE ACIK ===\n");
+      |     ^~~~~~
+../Core/Src/main.c:127:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:336:6: warning: 'MPU_Config' defined but not used [-Wunused-function]
+  336 | void MPU_Config(void)
+      |      ^~~~~~~~~~
+../Core/Src/main.c:307:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  307 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "1_Lab-1-Cache_CM7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\sumey\STM32CubeIDE\workspace_stm32H7\1_Lab-1-Cache\CM7\STM32H745ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_Lab-1-Cache_CM7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_Lab-1-Cache_CM7.elf
+ 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+arm-none-eabi-objdump -h -S 1_Lab-1-Cache_CM7.elf  > "1_Lab-1-Cache_CM7.list"
+   text	   data	    bss	    dec	    hex	filename
+  15768	   4204	   1908	  21880	   5578	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_Lab-1-Cache_CM7.list
+ 
+21:29:23 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:29:23 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15768	   4204	   1908	  21880	   5578	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+21:29:39 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:30:47 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:30:47 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DCORE_CM7 -DUSE_HAL_DRIVER -DSTM32H745xx -DUSE_PWR_DIRECT_SMPS_SUPPLY -c -I../Core/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:211:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  211 |  printf("=== CACHE ACIK ===\n");
+      |  ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:211:2: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  211 |  printf("=== CACHE ACIK ===\n");
+      |  ^~~~~~
+../Core/Src/main.c:211:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "1_Lab-1-Cache_CM7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\sumey\STM32CubeIDE\workspace_stm32H7\1_Lab-1-Cache\CM7\STM32H745ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_Lab-1-Cache_CM7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_Lab-1-Cache_CM7.elf
+ 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+arm-none-eabi-objdump -h -S 1_Lab-1-Cache_CM7.elf  > "1_Lab-1-Cache_CM7.list"
+   text	   data	    bss	    dec	    hex	filename
+  17296	   4204	   1908	  23408	   5b70	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_Lab-1-Cache_CM7.list
+ 
+21:30:52 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:30:53 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17296	   4204	   1908	  23408	   5b70	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+21:31:10 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:38:09 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:38:09 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DCORE_CM7 -DUSE_HAL_DRIVER -DSTM32H745xx -DUSE_PWR_DIRECT_SMPS_SUPPLY -c -I../Core/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:217:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  217 |  printf("=== CACHE KAPALI ===\n");
+      |  ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:217:2: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  217 |  printf("=== CACHE KAPALI ===\n");
+      |  ^~~~~~
+../Core/Src/main.c:217:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:221:7: warning: unused variable 'cacheDisableRam' [-Wunused-variable]
+  221 |   int cacheDisableRam =measure_ram();
+      |       ^~~~~~~~~~~~~~~
+../Core/Src/main.c:219:6: warning: unused variable 'cacheDisableFlash' [-Wunused-variable]
+  219 |  int cacheDisableFlash = measure_flash();
+      |      ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:215:6: warning: unused variable 'cacheEnableRam' [-Wunused-variable]
+  215 |  int cacheEnableRam =measure_ram();
+      |      ^~~~~~~~~~~~~~
+../Core/Src/main.c:213:6: warning: unused variable 'cacheEnableFlash' [-Wunused-variable]
+  213 |  int cacheEnableFlash = measure_flash();
+      |      ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "1_Lab-1-Cache_CM7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\sumey\STM32CubeIDE\workspace_stm32H7\1_Lab-1-Cache\CM7\STM32H745ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_Lab-1-Cache_CM7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_Lab-1-Cache_CM7.elf
+ 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+arm-none-eabi-objdump -h -S 1_Lab-1-Cache_CM7.elf  > "1_Lab-1-Cache_CM7.list"
+   text	   data	    bss	    dec	    hex	filename
+  15496	   4204	   1908	  21608	   5468	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_Lab-1-Cache_CM7.list
+ 
+21:38:27 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:38:28 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  15496	   4204	   1908	  21608	   5468	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+21:38:42 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:40:40 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:40:41 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DCORE_CM7 -DUSE_HAL_DRIVER -DSTM32H745xx -DUSE_PWR_DIRECT_SMPS_SUPPLY -c -I../Core/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:221:7: warning: unused variable 'cacheDisableRam' [-Wunused-variable]
+  221 |   int cacheDisableRam =measure_ram();
+      |       ^~~~~~~~~~~~~~~
+../Core/Src/main.c:219:6: warning: unused variable 'cacheDisableFlash' [-Wunused-variable]
+  219 |  int cacheDisableFlash = measure_flash();
+      |      ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:215:6: warning: unused variable 'cacheEnableRam' [-Wunused-variable]
+  215 |  int cacheEnableRam =measure_ram();
+      |      ^~~~~~~~~~~~~~
+../Core/Src/main.c:213:6: warning: unused variable 'cacheEnableFlash' [-Wunused-variable]
+  213 |  int cacheEnableFlash = measure_flash();
+      |      ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "1_Lab-1-Cache_CM7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\sumey\STM32CubeIDE\workspace_stm32H7\1_Lab-1-Cache\CM7\STM32H745ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_Lab-1-Cache_CM7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_Lab-1-Cache_CM7.elf
+ 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+arm-none-eabi-objdump -h -S 1_Lab-1-Cache_CM7.elf  > "1_Lab-1-Cache_CM7.list"
+   text	   data	    bss	    dec	    hex	filename
+  12836	   4112	   1568	  18516	   4854	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_Lab-1-Cache_CM7.list
+ 
+21:40:45 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:40:46 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12836	   4112	   1568	  18516	   4854	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+21:41:05 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:48:44 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:48:44 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DCORE_CM7 -DUSE_HAL_DRIVER -DSTM32H745xx -DUSE_PWR_DIRECT_SMPS_SUPPLY -c -I../Core/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'measure_ram':
+../Core/Src/main.c:98:16: error: 'ram_array' undeclared (first use in this function); did you mean 'flash_array'?
+   98 |         sum += ram_array[i];
+      |                ^~~~~~~~~
+      |                flash_array
+../Core/Src/main.c:98:16: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:95:23: warning: variable 'sum' set but not used [-Wunused-but-set-variable]
+   95 |     volatile uint32_t sum = 0;
+      |                       ^~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:221:7: warning: unused variable 'cacheDisableRam' [-Wunused-variable]
+  221 |   int cacheDisableRam =measure_ram();
+      |       ^~~~~~~~~~~~~~~
+../Core/Src/main.c:219:6: warning: unused variable 'cacheDisableFlash' [-Wunused-variable]
+  219 |  int cacheDisableFlash = measure_flash();
+      |      ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:215:6: warning: unused variable 'cacheEnableRam' [-Wunused-variable]
+  215 |  int cacheEnableRam =measure_ram();
+      |      ^~~~~~~~~~~~~~
+../Core/Src/main.c:213:6: warning: unused variable 'cacheEnableFlash' [-Wunused-variable]
+  213 |  int cacheEnableFlash = measure_flash();
+      |      ^~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:31: Core/Src/main.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+21:48:54 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:48:54 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DCORE_CM7 -DUSE_HAL_DRIVER -DSTM32H745xx -DUSE_PWR_DIRECT_SMPS_SUPPLY -c -I../Core/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'measure_ram':
+../Core/Src/main.c:95:23: warning: unused variable 'sum' [-Wunused-variable]
+   95 |     volatile uint32_t sum = 0;
+      |                       ^~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:221:7: warning: unused variable 'cacheDisableRam' [-Wunused-variable]
+  221 |   int cacheDisableRam =measure_ram();
+      |       ^~~~~~~~~~~~~~~
+../Core/Src/main.c:219:6: warning: unused variable 'cacheDisableFlash' [-Wunused-variable]
+  219 |  int cacheDisableFlash = measure_flash();
+      |      ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:215:6: warning: unused variable 'cacheEnableRam' [-Wunused-variable]
+  215 |  int cacheEnableRam =measure_ram();
+      |      ^~~~~~~~~~~~~~
+../Core/Src/main.c:213:6: warning: unused variable 'cacheEnableFlash' [-Wunused-variable]
+  213 |  int cacheEnableFlash = measure_flash();
+      |      ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "1_Lab-1-Cache_CM7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\sumey\STM32CubeIDE\workspace_stm32H7\1_Lab-1-Cache\CM7\STM32H745ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_Lab-1-Cache_CM7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_Lab-1-Cache_CM7.elf
+ 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+arm-none-eabi-objdump -h -S 1_Lab-1-Cache_CM7.elf  > "1_Lab-1-Cache_CM7.list"
+   text	   data	    bss	    dec	    hex	filename
+  12816	     16	   1568	  14400	   3840	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_Lab-1-Cache_CM7.list
+ 
+21:49:19 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:49:19 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DCORE_CM7 -DUSE_HAL_DRIVER -DSTM32H745xx -DUSE_PWR_DIRECT_SMPS_SUPPLY -c -I../Core/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc -I../../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:221:7: warning: unused variable 'cacheDisableRam' [-Wunused-variable]
+  221 |   int cacheDisableRam =measure_ram();
+      |       ^~~~~~~~~~~~~~~
+../Core/Src/main.c:219:6: warning: unused variable 'cacheDisableFlash' [-Wunused-variable]
+  219 |  int cacheDisableFlash = measure_flash();
+      |      ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:215:6: warning: unused variable 'cacheEnableRam' [-Wunused-variable]
+  215 |  int cacheEnableRam =measure_ram();
+      |      ^~~~~~~~~~~~~~
+../Core/Src/main.c:213:6: warning: unused variable 'cacheEnableFlash' [-Wunused-variable]
+  213 |  int cacheEnableFlash = measure_flash();
+      |      ^~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "1_Lab-1-Cache_CM7.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\sumey\STM32CubeIDE\workspace_stm32H7\1_Lab-1-Cache\CM7\STM32H745ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_Lab-1-Cache_CM7.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 1_Lab-1-Cache_CM7.elf
+ 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+arm-none-eabi-objdump -h -S 1_Lab-1-Cache_CM7.elf  > "1_Lab-1-Cache_CM7.list"
+   text	   data	    bss	    dec	    hex	filename
+  12836	   4112	   1568	  18516	   4854	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 
+Finished building: 1_Lab-1-Cache_CM7.list
+ 
+21:49:44 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM4 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM4.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3196	     16	   1568	   4780	   12ac	1_Lab-1-Cache_CM4.elf
+Finished building: default.size.stdout
+ 
+21:49:44 **** Incremental Build of configuration Debug for project 1_Lab-1-Cache_CM7 ****
+make -j16 all 
+arm-none-eabi-size  1_Lab-1-Cache_CM7.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12836	   4112	   1568	  18516	   4854	1_Lab-1-Cache_CM7.elf
+Finished building: default.size.stdout
+ 

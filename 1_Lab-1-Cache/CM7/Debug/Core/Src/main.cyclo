@@ -1,0 +1,10 @@
+../Core/Src/main.c:78:6:DWT_Init	1
+../Core/Src/main.c:84:10:measure_flash	2
+../Core/Src/main.c:94:10:measure_ram	2
+../Core/Src/main.c:104:6:Cache_Disable	3
+../Core/Src/main.c:109:6:Cache_Enable	5
+../Core/Src/main.c:122:5:main	7
+../Core/Src/main.c:241:6:SystemClock_Config	4
+../Core/Src/main.c:292:13:MX_GPIO_Init	1
+../Core/Src/main.c:321:6:MPU_Config	1
+../Core/Src/main.c:352:6:Error_Handler	1

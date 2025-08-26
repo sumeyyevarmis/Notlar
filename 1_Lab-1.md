@@ -77,6 +77,10 @@ int main(void){
 ![first](doc/1_1-Lab-1-Cache_image1.png)
 
 ## The Result
+Start cycle is 24. End cycle is 250076. Result cycle is 250052.
+
+So, It can seen that reading data from RAM takes 250052 cycle.
+
 
 # Test 2
 ## 1. Purpose
@@ -84,10 +88,10 @@ Observing how many cycles it take to read data from FLASH.
 ```
 #define SIZE 10000
 
-// Flash da saklanan veri
+// Flash 
 const uint32_t flash_array[SIZE] = {1};
 
-// RAM de saklanan veri
+// RAM 
 uint32_t ram_array[SIZE];
 
 // DWT cycle counter init
@@ -106,7 +110,7 @@ int main(void){
 
     uint32_t sum = 0;
 
-    // FLASH’tan okuma
+    // from FLASH
     for (int i = 0; i < SIZE; i++) {
 	    sum += flash_array[i];
     }
@@ -117,6 +121,11 @@ int main(void){
 ```
 
 ![second](doc/1_1-Lab-1-Cache_image2.png)
+
+## The Result
+Start cycle is 41. End cycle is 247997. Result cycle is 247956.
+
+So, It can seen that reading data from FLASH takes 247956 cycle.
 
 
 # Test 3
@@ -181,8 +190,38 @@ int main(void){
 }
 ```
 
+
+**Figure 1 shows the initial values of the variables used in the test.**
+
 ![third](doc/1_1-Lab-1-Cache_image3.png)
+
+
+**Figure 2 shows the cycle counts for reading data from RAM and flash when the cache is enabled.**
 
 ![fourth](doc/1_1-Lab-1-Cache_image4.png)
 
+
+**Figure 2 shows the cycle counts for reading data from RAM and flash when the cache is disable.**
+
 ![fifth](doc/1_1-Lab-1-Cache_image5.png)
+
+
+# Comparison of the Tests
+
+## **Test1 and Test2**
+- These are tests performed without including cache.
+- Data is read faster from Flash than RAM.
+
+## **Test3**
+
+- Data is read faster from Flash than RAM everytime.
+- When cache is enabled, the data speed read from RAM and flash is faster than when cache is disabled.
+
+| Test | Data Source | Cache Status  | Measured Cycles | Comment                           |
+| ---- | ----------- | ------------- | --------------- | --------------------------------- |
+| 1    | RAM         | No cache      | 250052          | RAM access is slower              |
+| 2    | Flash       | No cache      | 247956          | Flash is slightly faster than RAM |
+| 3    | RAM         | Cache enabled | 13465           | Cache provides access advantage   |
+| 3    | Flash       | Cache enabled | 12456           | Benefits from cache               |
+| 3    | RAM         | Cache disable | 25989           | RAM access is slower              |
+| 3    | Flash       | Cache disable | 25973           | Flash is slightly faster than RAM |

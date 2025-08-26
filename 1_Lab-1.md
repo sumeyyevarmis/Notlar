@@ -1,3 +1,25 @@
+# Description of the DWT_Init Function
+This function enables the cycle counter of the DWT (Data Watchpoint and Trace) unit found in Cortex-M series processors. In other words, it resets and starts a hardware counter that counts CPU clock cycles-allowing you to perform very high-resolution timing and preformance measurements.
+```
+void DWT_Init(void) {
+    CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk; // DWT enable
+    DWT->CYCCNT = 0;                                // reset counter
+    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;            // start counter
+}
+```
+- ````CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;````
+It sets the **TRCENA** bit in **DEMCR (Debug Exception and Monitor Control Register)**. This bit enables the operation of core tracing units such as Trace/DWT/ITM. In other words, to use the DWT, we first need to enable the trace insfastructure.
+
+- ``DWT->CYCCNT = 0;``
+It resets the cycle counter. **CYCCNT** represents a 32-bit counter; here, we clear it to start a fresh measurement.
+
+- ``DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;``
+It starts the counter by setting the **CYCCBTENA (cycle counter enable)** bit in the DWT control register.
+
+## What is it used for?
+The DWT cycle counter is usd to measure how many CPU cycles a piece of code consumes.
+
+
 # Test 1
 ## 1. Purpose
 Observing how many cycles it take to read data from RAM.

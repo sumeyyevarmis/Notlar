@@ -19,17 +19,33 @@ It starts the counter by setting the **CYCCBTENA (cycle counter enable)** bit in
 ## What is it used for?
 The DWT cycle counter is usd to measure how many CPU cycles a piece of code consumes.
 
+## Important Notes / Points to Consider
+- **Hardware support:** The DWT does not provide the same features across all Cortex-M cores.
+- **32-bit Wrap(overflow):** CYCCNT is 32-bit; at high frequencies, it will wrap around during very long measurements.
+- **The counter increments only while the core is running:** It may not increase during CPU halt/sleep states; behavior can differ in WFI/WFR or debug halt conditions.
+- **Interrupt are included:** Time time spent in interrupts during your measured code will also be counted. If you need uninterrupted measurement, you can mask interrupts during the measurement (though this is generally not recommended).
+- **RTOS / multitasking:** If you perform measurements within a task, thread switches will be included in the measurement. To obtain the actual “pure code” execution time, you need to prevent task switches.
+- **Access/permissions:** In some security or IDLE configurations, access to the DWT may be restricted; if an error occurs, check the reference manual.
+- **Performance impact:** The counter is hardware-based; reading it takes 1–2 cycles, but the measurement overhead is generally very small and acceptable.
+
+## Quick Comparison
+
+- **SysTick / HAL\_GetTick()** → millisecond resolution, system timer, suitable for long-term timing.
+- **DWT CYCCNT** → CPU cycle resolution (down to nanoseconds/µs level), ideal for short and precise performance measurements.
+
 
 # Test 1
 ## 1. Purpose
 Observing how many cycles it take to read data from RAM.
+
+## Code
 ```
 #define SIZE 10000
 
-// Flash da saklanan veri
+// Flash 
 const uint32_t flash_array[SIZE] = {1};
 
-// RAM de saklanan veri
+// RAM 
 uint32_t ram_array[SIZE];
 
 // DWT cycle counter init
@@ -48,7 +64,7 @@ int main(void){
 
     uint32_t sum = 0;
 
-    // RAM den okuma
+    // from RAM
     for (int i = 0; i < SIZE; i++) {
          sum += ram_array[i];
     }
@@ -59,6 +75,8 @@ int main(void){
 ```
 
 ![first](doc/1_1-Lab-1-Cache_image1.png)
+
+## The Result
 
 # Test 2
 ## 1. Purpose

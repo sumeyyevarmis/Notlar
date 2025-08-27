@@ -83,3 +83,69 @@ It is external memory that is not as fast as the main memory but data stays perm
 - Data is stored on temporary basis in Cache Memory.
 - Whenever the system turned off, data and instructions stored in cache memory get destroyed.
 - The high cost of cache memory increases the price of the Computer System.
+
+
+## AXI ?
+
+### a. Overview
+The AXI (advaced extensible interface) interconnect is based on the ARM CoreLink NIC-400 Network Interconnect.
+
+Its main feature are:
+- 64-bit AXI bus switch matrix with seven AMBA Slave Interface Blocks (ASIBs) and seven AMBA Master Interface Blocks (AMIBs), in D1 domain.
+- Concurrent connectivity of multiple ASIBs to multiple AMIBs
+- Programmable traffic priority management to ensure the quality of service (QoS)
+- Software-configurable via GPV
+
+### b. Block Diagram
+The ASIBs are connected to the AMIBs via AXI switch matrix. Each ASIB is a slave on an AXI or AHB bus (advanced high-performance bus). Similary, each aMIB is a master on an AXI or AHB bus. Where an ASIB or an AMIB is connected to an AHB bus, it converts between the AHB bus and the AXI bus protocol.
+
+The AXI interconnect includes a global programmer view (GPV) which contains register for configuring a few parameters, such as the quality of service (QoS) level at each ASIB.
+
+### c. From The Net
+In the STM32H7 series, the **AXI inerconnect** is a high-speed interconnection structure that organizes data exchange between the microcontroller's different cores, memory blocks, and peripheral units.
+
+More technically:
+
+**1. Master and Slave Ports:**
+- ASIBs (AMBA Slave Interfaca Blocks): Initiator ports, typically processors or units such as DMA that send data. Each ADIB can operate cas a slave on the AXI or AHB bus.
+- AMIBs (AMBA Master Interface Blocks): Target ports, typically memory or peripheral units. Each AMIB can operate as master on the AXI or AHB bus.
+
+**2. AXI Switch Matrix:**
+The switch matrix connecting the ASIBs to the AMIBs manages simultaneous data traffic between multiple masters and slaves.
+
+**3. Protocol Conversion:**
+- If an ASIB or AMIB is connected to the AHB bus, it performs protocol conversion between AXI and AHB.
+
+**4. Quality of Service and Priority Management:**
+- Within the AXI interconnect, a **GPV (Global Programmer View)** is available. Through this, parameters such as QoS level can be configured via software, allowing certain data paths to be prioritized.
+
+**5. Default Slave:**
+- Accesses made to unallocated address regions are handled by the default slave, preventing the initiator master or ASIB from being blocked.
+
+In short: The AXI interconnect in the STM32H7 is a central bridge and traffic manager that links high-speed data buses and ensures concurrent and reliable data transfer.
+
+![AXI](doc/1_2-AXI.png)
+
+- Left blue boxes → **ASIBs** (initiator/master ports)
+- Center gray box → **AXI Switch Matrix** (traffic manager)
+- Right green boxes → **AMIBs** (target/slave ports)
+
+In other words, data flows along the path **ASIB → AXI Switch → AMIB.**
+
+In AXI/AMBA terminology, there are the concepts of **"intiator" (master/origibator)** and **"targer (slave/receiver).**
+
+- **Initiator (master):** The endpoint that initiates a transaction (e.g. CPU, DMA).
+- **Target (slave):** The endpoint that responds to a transaction (e.g. SRAM, Flash, peripheral).
+
+#### ASIB (AMBA Slave Interface Block)
+Although it is called a **“slave”**, in reality it serves as an entry point to the AXI interconnect — meaning it is defined as an **initiator port**. Through this, masters such as the CPU or DMA connect to the interconnect.
+
+#### AMIB (AMBA Master Interface Block)
+Although it is called a **“master”**, it actually serves as an exit point of the AXI interconnect — meaning it is defined as a **target port**. Through this, memories or peripheral units are accessed.
+
+
+### d. APB vs AXI ?
+#### 1. What is APB ?
+- APB (Advanced Peripheral Bus) -> The simplest and slowest bus in the AMBA architecture.
+- Design is lightweight, low-power, and has low hardware cost.
+- Typically, low-speed peripherals such as UART, GPIO, I2C, SPI and Timers operate over this bus.

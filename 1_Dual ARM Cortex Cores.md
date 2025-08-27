@@ -146,6 +146,54 @@ Although it is called a **“master”**, it actually serves as an exit point of
 
 ### d. APB vs AXI ?
 #### 1. What is APB ?
-- APB (Advanced Peripheral Bus) -> The simplest and slowest bus in the AMBA architecture.
+- **APB (Advanced Peripheral Bus)** -> The simplest and slowest bus in the AMBA architecture.
 - Design is lightweight, low-power, and has low hardware cost.
 - Typically, low-speed peripherals such as UART, GPIO, I2C, SPI and Timers operate over this bus.
+- Characteristics:
+    - Unidirectional, simple address/command phase -> followed by data transfer.
+    - No support for brust (consecutive block) transfer
+    - Typically used for peripherals that require low bandwidtgh.
+
+#### 2. What is AXI ?
+- **AXI (Advanced Extensible Interface)** -> The evolved, high-performance version of AHB.
+- It used high-speed like the STM32H7, especially to support multi-master & multi-slave configurations.
+- Characteristics:
+    - **Pipeline Support:** Address and daha phase proceed in paralle -> very fast.
+    - **Brust Transfer:** Multi data blocks transferred in a single transaction.
+    - **Out-of-order Transactions:** Operations can complate in different order, avoiding blocking.
+    - Advanced traffic management: QoS, priority management, and parallel access.
+    - Suitable for memories requiring high bandwidth, such as DDR, SRAM, and Flash.
+
+#### 3. What is AHB ?
+- **AHB (Advanced High-Performance Bus)** -> A bus operating at medium speed within the AMBA architecture.
+- In the STM32 family, it usually servers as the main system bus.
+- It is not as advanced as AXI but is much faster than APB.
+- Characteristics:
+    - 32/64-bit data bus, supports brust transfers.
+    - Typically used for connecting DMA, memory, and high-speed peripherals.
+
+
+
+```text
+        +-------------------+
+        |   Cortex-M7 CPU   |
+        +-------------------+
+                |
+               (AXI)
+                |
+     +-----------------------+
+     |   AXI Interconnect    |
+     +-----------------------+
+        |               |
+      (AHB)           (AXI direct to RAM/Flash/SDRAM)
+        |
+   +-----------+-----------+
+   |                       |
+(AHB Bus)             (APB Bridge)
+   |                       |
+High-speed             Low-speed
+peripherals            peripherals
+(DMA, ETH, USB)        (UART, GPIO, I2C, TIM)
+
+
+```

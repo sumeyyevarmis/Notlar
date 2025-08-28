@@ -84,8 +84,9 @@ It is external memory that is not as fast as the main memory but data stays perm
 - Whenever the system turned off, data and instructions stored in cache memory get destroyed.
 - The high cost of cache memory increases the price of the Computer System.
 
+### Look at Lab-1
 
-## AXI ?
+## 2. AXI ?
 
 ### a. Overview
 The AXI (advaced extensible interface) interconnect is based on the ARM CoreLink NIC-400 Network Interconnect.
@@ -197,3 +198,25 @@ peripherals            peripherals
 
 
 ```
+
+## 3. What is Burst Transfer ?
+A Burst transfer is a method of transferring multiple consecutive data words to memory or a peripheral in a single command (as a block).
+
+In other words:
+- **Normally:** Each read/write requires a separete address and control signal.
+- **In a burst transfer:** The starting address is given once, then the addres is incremented automatically, and the data flows consecutively.
+
+### Advantages
+- **Speed:** The address phase is not repeated -> the address is send only once, and the remaining data flows in a "streaming" manner.
+- **Efficiency:**  Less traffic on the memory controller and the bus.
+- **High throughput for large data blocks:** Image, audio, DMA transfer ...
+
+### Ehere is it used in STM32 ?
+- **DMA:** Large block data (e.g. ADC buffer, UART Rx Buffer, SDMMC, RMC-SDRAM)
+- **AXI/AHB Bus:** Memory transfer, CPU cache accesses.
+- **SDRAM/Flash:** Fast sequential access.
+- **LCD/TFT (LTDC), Camera (DCMI):** Sequential data streams that require high bandwidth.
+
+### Summary
+
+Burst transfer = *"give the address once, then move sequential block data continuously."* It is especially critical in high-speed buses like AXI because it allows maximum utilization of available bandwidth.

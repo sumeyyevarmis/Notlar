@@ -252,4 +252,11 @@ Burst transfer = *"give the address once, then move sequential block data contin
 
 
 ## 5. What is AHB-Lite ?
+In the STM32H7, "AHB-Lite" is actually a derivative of the AMBA (Advanced Microcontroller Bus Architecture) protocol. This bus architecture, defined by ARM, is used for communication between the processor core and peripheral units.
 
+### a. AHB vs AHB-Lite
+- **AHB (Advanced High-performance Bus):**
+It is a multi-master, high-performance, pipelined bus (multiple master devices can exist, such as CPU, DMA, etc.). In other words, multiple masters can simultaneously access different slaves.
+
+- **AHB-Lite:**
+It is a simplified version of AHB. Here, there is only **one master** (e.g., the Cortex-M7 core). Multi-master support is not available, meaning multiple devices cannot control the bus simultaneously.

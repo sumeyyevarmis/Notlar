@@ -220,3 +220,36 @@ In other words:
 ### Summary
 
 Burst transfer = *"give the address once, then move sequential block data continuously."* It is especially critical in high-speed buses like AXI because it allows maximum utilization of available bandwidth.
+
+## 4. TCM, ITCM, DTCM ?
+
+### What is TCM (Tightly Coupled Memory) ?
+- It is different from Normal RAM. It is memory type that is very close to the core, with low latency and deterministic (predictable) behavior.
+- It other words, you won't face "miss" issues that occur with cache-based memory accesses.
+- İf you say, "My code/data is very critical and must always be accessed in a single cycle." TCM is used.
+
+### What is ITCM (Instruction Tightly Coupled Memory) ? 
+- A dedicated TCM for **instructions** -> meaning **code memory**
+- You place the critical parts of the program here (e.g. SR – interrupt service routines, control algorithms, motor drive loops)
+- The Core fetches intructions from the ITCM directly in a single cycle, without using the cache.
+- Much faster and more predictable compared to fetching code from Flash.
+- For example: If an interrupt run evey 10 us in a motor control loop, you place the code in the ITCM -> it executes at the **same speed every time,** with no jitter.
+
+### What is DTCM (Data Tightly Coupled Memory) ?
+- A dedicated TCM for **Data** -> In other words, memory where critical variables are stored.
+- Instead of regular SRAM, it operates like specific register blocks -> accessed by the core's load/store units in a single cycle.
+- For example: the latest values from the ADC, PID control parameters, or DSP buffers — variables that are accessed very frequently — are stored in the DTCM.
+- If they were in normal SRAM, the cache would come into play — sometimes giving single-cycle access, sometimes taking a few cycles. In the DTCM, this fluctuation doesn’t exist.
+
+### Difference from normal SRAM
+
+| Feature                      | Normal SRAM                | TCM (ITCM / DTCM)                       |
+| ---------------------------- | -------------------------- | --------------------------------------- |
+| Access speed                 | Cache-dependent → variable | **Fixed, deterministic (single cycle)** |
+| Location                     | Through bus matrix         | Directly connected to the core          |
+| Usage                        | General purpose            | Critical code and data                  |
+| Jitter (latency fluctuation) | Present                    | Absent                                  |
+
+
+## 5. What is AHB-Lite ?
+

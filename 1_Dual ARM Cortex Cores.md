@@ -278,3 +278,25 @@ So, the bus architecture of the STM32H7 is roughly as follows:
 AHB-Lite is the single-master version of AHB. In STM32H7, the CPU accesses peripherals through this bus. More complex and high-speed operations (DMA, memory access) are handled on the AXI/AHB side.
 
 ## 6. What is DSP
+### a. What is DPS Instructions ?
+DSP stands for **Digital Signal Processing.** In the STM32H7, the Cortex-M7 core includes **DSP extensions (DSP instructions)** alongside normal ARM instructions. These are specifially designed to accelerate mathematical and signal processing operations.
+
+DSP instructions include the following:
+- **Saturating arithmetic:** Addition/subraction with saturation in case of overflow (e.g. QADD, QSUB)
+- **Multiply-accululate (MAC):** Performing multiplication and addition in a single instruction (e.g., SMLAxy). This is widely used in filtering and FFT operations.
+- **SIMD-style instructions:** Ability to process multiple 16-bit or 8-bit values within a single 32-bit register.
+
+These instructions significantly improve performance in DSP and audio processing, filtering, FFT, and FIR/IIR filter algorithms.
+
+### b. Advantages of DSP in STM32H7
+
+* **Fast digital filtering:** With the M7 core, you can use DSP instructions at speeds over 100 MHz.
+* **Fixed-point math:** Using fixed-point arithmetic instead of floating-point reduces latency and power consumption.
+* **Matrix and signal processing:** More efficient for image processing and motor control applications.
+
+### c. Using DSP in STM32H7
+
+* **CMSIS DSP library:** ST provides the CMSIS-DSP library to use DSP instructions from C.
+* **Example:** Predefined functions like FIR filters, FFT, and matrix operations utilize M7 DSP instructions.
+* This allows high-performance DSP operations on M4 or M7 cores.
+

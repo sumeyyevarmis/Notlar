@@ -260,3 +260,21 @@ It is a multi-master, high-performance, pipelined bus (multiple master devices c
 
 - **AHB-Lite:**
 It is a simplified version of AHB. Here, there is only **one master** (e.g., the Cortex-M7 core). Multi-master support is not available, meaning multiple devices cannot control the bus simultaneously.
+
+**In STM32H7, you will generally see the fllowing:**
+- The CPU (Cortex-M7 core) accesses the peripherals through the AHB-Lite bus.
+- In systems that require multiple masters, such as DMA, the AHB (or AXI bus) is used.
+
+### b. Bus Architecture in STM32H7
+In the STM32H7 series, the CPU actually operates through the ACI interconnect. However, some low-speed peripherals (such as GPIO, UART, SPI) are not connected to AXI, but instead to rhe AHB-Lite bus.
+
+So, the bus architecture of the STM32H7 is roughly as follows:
+
+* **AXI Bus** → high-speed memories (DTCM, ITCM, SRAM, Flash, FMC, QSPI, etc.)
+* **AHB-Lite Bus** → lower-speed peripherals (UART, I2C, SPI, TIM, GPIO, etc.)
+* **APB Bus** → even lower-speed, register-based peripherals.
+
+### c. Summary
+AHB-Lite is the single-master version of AHB. In STM32H7, the CPU accesses peripherals through this bus. More complex and high-speed operations (DMA, memory access) are handled on the AXI/AHB side.
+
+## 6. What is DSP

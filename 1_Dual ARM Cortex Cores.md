@@ -300,3 +300,131 @@ These instructions significantly improve performance in DSP and audio processing
 * **Example:** Predefined functions like FIR filters, FFT, and matrix operations utilize M7 DSP instructions.
 * This allows high-performance DSP operations on M4 or M7 cores.
 
+## 7. Pipelinig in ARM
+Pipelining in ARM processors can be described as a situation in which many stages of instuctions such as the fetch, the decde, the excecution, among others, are enhanced or overlapped in order to improve the performance of the CPU. Each stage of the pipeline at work on a different instruction at the same time thereby enhancing throughput.
+
+### a. What is ARM Pipelining
+- A **Pipelining** is the mechanism used by **RISC (Reduced instruction set coumputer)** processors to execute instructions.
+- By speeding up the execution by **fetching** the instructions, while other instuctions are being **decoded and executed** simultaneously.
+- Which in turn allows the memory system and processor to work contiuously.
+- The pipeline design for each ARM family is different.
+
+Pipelining is a design technique or a process which plays an important role increasing the efficiency of data processor of a computer and microcontroller. By keeping the processor in a continuous process of fetching, decoding and executing called (F&E cycle).
+
+ARM device need pipelining because of RISC as it emphasizes on compıler complexity. Each stage is equivalent to 1 cycle.
+
+![Pipeline](doc/1_7-1pipeline.png)
+
+- Fetch loads an instruction from memory.
+- Decode identifies the instruction to be executed.
+- Execute processes the instruction and writes the result back to the register.
+- By overlapping the aboce stages of excecution of different instructions, the speed of execution is increased.
+- The pipelining allows the core to execute an instruction evet cycle, which results in increased throughput.
+
+### b. ARM Pipeline Characteristic
+- The ARM pipeline doesn't process an instruction until it passes completely through the execution stage.
+- İn the execution stage, the PC always points to the instruction address + 8 bytes.
+- When the processor is in thumb state, PC always points to instruction address + 4 bytes.
+- While executing branch instructions or branching by direct modification of PC causes the ARM core to **flush** it's pipeline.
+- As instruction in the execution stage will complete its execution even though an interrupt has been raised.
+
+### c. 3-Stage Pipeline
+Pipeline is a form of instruction counterpart or execution in stages and a 3-stage pipeline is a basic version of the same. It splits the instruction cycle into three stages:
+- **Fetch:** It is to note that the instruction is retrieved from the memory.
+- **Decode:** This instruction is fetched and then the instruction is decoded where it is understood on which operation is required to be performed.
+- **Execute:** The instruction, in turn, gets decoded and the resultant calculated value is stored.
+
+#### Advantages of 3-Stage Pipelining
+- **Reduced Complexity:** This is so because when one designs for fewer stages are unlike to possess as complex a design as one that has many stages.
+- **Lower Power Consumption:** Smaller numbers would also seem to be associated with smaller power demands read smaller power stages.
+- **Reduced Latency:** Instructions can move from fetch to execution in few steps so that they are executed quickly.
+
+### d. 5 Stage Pipelining
+A 5- stage pipeline is an enhanced form of pipelining used in today’s CPU or computer processors. It breaks the instruction cycle into five stages:
+
+It breaks the instruction cycle into five stages:
+
+- **Fetch:** Thus the instruction is fetched from memory.
+- **Decode:** Information is fetched using cache control instructions; the fetched instruction is in turn decoded.
+- **Execute:** As instructed the operation described in the instruction is performed.
+- **Memory Access:** Read any registers needed by the instruction.
+- **Write-back:** To the register the result of the operation is then written back.
+
+
+#### Advantages of 5-Stage Pipelining
+- **Increased Instruction Throughput:** For more instruction, they work at the same time hence enhancing performance.
+- **Better Resource Utilization:** It is used on the components of the CPU in a manner of less wastage.
+- **Scalability:** It has become a regular pipeline structure incorporated in advanced processors to warrant scalability of performance.
+
+### e. Advantages of Pipelining in ARM
+- Increased Efficiency: This way the ARM processors can handle multiple instructions in parallel and thus have a higher throughput.
+- Improved Power Efficiency: ARM has a streamlined pipeline design which again consumes little of power thus making it very efficient in mobiles and other embedded systems.
+- Reduced Latency: As mentioned above, pipelining helps in saving the time it takes to execute instructions, thus making ARM architecture to be fast and responsive.
+
+
+### f. Disadvantages of Pipelining in ARM
+- Pipeline Hazards: These are the conditions that result in interruption of the pipelines leading to delay in the execution of instructions.
+- Increased Complexity: Mention that with addition of the pipelines, the total design of this processor escalates as well.
+- Stalling: Data dependences may require instructions to wait and hence result in pipeline stalls.
+
+## 8. I-Bus and D-Bus Interface
+
+The concepts of **I-Bus** and **D-Bus** are related to the Harvard architecture, which is common in Arm Cortex-M processors. The Arm Cortex-M core (e.g., M3, M4, M7) essentially uses three separate buses:
+
+* **I-Bus (Instruction Bus)**
+* **D-Bus (Data Bus)**
+* **S-Bus (System Bus)**
+
+All of these operate over different channels based on AHB-Lite. Let’s look at them individually:
+
+### a. I-Bus (Instruction Bus)
+
+As the name suggests, it is used only for instruction fetch operations.
+
+The core fetches the instructions it will execute from Flash memory or the Instruction cache via the I-Bus.
+
+In other words, program code is read through this bus.
+
+**Advantage:** It does not interfere with data accesses, allowing the processor to read code and read/write data simultaneously → enabling parallelism.
+
+### b. D-Bus (Data Bus)
+
+Used exclusively for data accesses (e.g., reading from or writing to RAM). Load and store instructions operate through this bus.
+
+For example:
+
+* Reading a variable from RAM
+* Writing the result of a calculation to RAM
+
+These operations occur via the D-Bus.
+
+### c. S-Bus (System Bus)
+
+Dedicated to peripheral accesses and some system resources.
+
+Hardware close to the processor, such as NVIC, SysTick, and certain debug registers, is accessed through this bus.
+
+Additionally, in most Cortex-M cores, peripherals are connected via the S-Bus rather than the D-Bus.
+
+### d. Why separate buses?
+
+The main reason for this separation is to enable parallel operation. For example:
+
+* I-Bus can fetch new instructions from Flash simultaneously,
+* D-Bus can read data from RAM at the same time,
+* S-Bus can access a peripheral concurrently.
+
+This significantly increases processor efficiency. Especially in advanced cores like the Cortex-M7, when combined with cache and TCM (Tightly Coupled Memory), this architecture provides very high performance.
+
+### e. Summary
+* **I-Bus** → Instruction fetch (reading commands from flash/cache).
+* **D-Bus** → Data read/write (load/store from RAM).
+* **S-Bus** → System and peripheral accesses.
+
+## 9. Von Neuman / Harvard Mimarisi
+
+### a. Von Neumann Architecture
+It is an architecture where program data and instruction data are stored in the same memory. The same physical memory addresses are used for both instructions and data. A single bus is shared for data and instruction transfers. The CPU cannot access instructions and read/write data on the same bus simultaneously. It is low-cost.
+
+### b. Harvard Architecture
+Separate physical memory addresses exist for instructions and data. Therefore, separate buses are used for instruction and data transfers. The CPU can access instructions and perform read/write operations simultaneously. It is more expensive compared to the Von Neumann architecture.

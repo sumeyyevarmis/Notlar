@@ -3,6 +3,10 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="EXTI15_10_IRQHandler"/>
+		<item value="void EXTI15_10_IRQHandler"/>
+		<item value="EXTI"/>
+		<item value="button"/>
 		<item value="ram_array"/>
 	</list>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">

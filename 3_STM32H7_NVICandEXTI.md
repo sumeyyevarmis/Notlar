@@ -18,3 +18,8 @@ When an interrupt is served and a new request with high priority arrives, the ne
 When an interrupt arrives, the processor first the program context before executing the interrupt hangler. If the processor is performing this contex-saving operation when an interrupt of higher priority arrives, the processor switch directly to hangling the higher-priority interrupt when it is finished saving the program context.
 
 When all of the exception hanflers have been run and no other exception is pending, the processor restores the provious context from the stack and returns to normal application execution.
+
+## 4. Notes
+Nesten vector interrupt controller (NVIC) is a method of prioritizing interrupt, improving the MCU's performance and reducing interrupt latency. 
+
+NVIC provides implementation schemes for handling interrupts that occur wher other interrupts are being executed or when the CPU is in the process of restoring its previous state and resuming its suspended process.

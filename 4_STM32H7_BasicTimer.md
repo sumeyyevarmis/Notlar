@@ -84,3 +84,35 @@ Artık timer saniyede 240 milyon değil, 10 bin kez sayar. Bu da insan ölçeği
 **Prescaler, timer'ın giriş frekansını bölerek daha uzun ve kullanılabilir süreler üretmeyi sağlar. Prescaler olmazsa timer aşırı hızlı çalış ve pratik süreler oluşturulamaz.**
 
 # 3. Auto Reload Register
+
+Auto-Reload Register (ARR) timerın sayacağı üst sınırı belirleyen register'dır. Aslında timerın "periyodunu" belirleyem kilit nokta burasıdır.
+
+## a. ARR Nedir?
+Timer sayacı (CNT) 0'dan başlar ve ARR değerine kadar sayar. ARR'ye ulaştığında overflow olur ve;
+- CNT tekrar 0'a döner
+- Update event (UEV) oluşur
+- Istersen interrupt tetiklenir.
+
+Yani ARR; "Timerın bir döngüsünün kaç sayımda tamamlanacağını belirleyen" register'dır.
+
+## b. ARR Ne İşe Yarar?
+
+1) Timer frekansını/periyodunu ayarlarsın: Timer çıkış frekansını belirleyen iki parametre vardır:
+  - PSC(prescaler) -> Zaman tabanlı bölücü
+  - ARR(Auto-reload) -> Sayaç üst sınır.
+2) Interrupt aralığını belirler: Örneğin 1ms'de bir interrupt istiyorsan ARR onu sağlayan değerdir.
+3) PWM modunda duty/periyot hesaplarında periyodu belirler (TIM6 PWM değil ama mantık aynı)
+
+## c. Neden ARR Kullanılır?
+Çünkü timerın periyodunu değiştirebileceğin tek yer burasıdır. Prescaler ile clock'u bölersin -> ARR ile bu bölünmüş clock'un kaç sayıp yapacağını belirlersin. Bu sayede:
+- Timer çok hızlıysa periyodu uzatmak için ARR'yi büyütürsün
+- Timer çok yavaşsa daha kısa periyot için ARR'yi küçültürsün
+- Dinamik olarak periyot değiştirebilirsin (ARR güncellenmesi ile)
+
+## ARR Nden/Ne Zaman Değişir?
+- PSC'nin çok büyümesi gerekiyorsa. PSC maksimum 65535 olabilir.
+- Yüksek çözünürlük gerekiyorsa. Eğer ARR çok büyükse, PSC çok küçük olur. PSC küçükse timer çözünürlüğü artar.
+- İsenen süre ARR'nin kapasitesinden taşarsa
+- PWM, DAC trigger veya başka modlarda ARR = Periyodun kendisir. PWM'de ARR periyodu belirler, CCR duty belirler.
+
+Bu yüzden ARR'yi değiştirmek zorunlu olur.

@@ -116,3 +116,35 @@ Yani ARR; "Timerın bir döngüsünün kaç sayımda tamamlanacağını belirley
 - PWM, DAC trigger veya başka modlarda ARR = Periyodun kendisir. PWM'de ARR periyodu belirler, CCR duty belirler.
 
 Bu yüzden ARR'yi değiştirmek zorunlu olur.
+
+# 4. Auto-Reload Preload Nedir? (Enable/Disable)
+
+## a. Auto-Reload Preload (APRE) Nedir?
+ARR register'ın güncellenme davranışını kontrol eder.
+- Timer sayıyor -> CNT (counter) 0'dan ARR'ye kadar sayar.
+- Eğer ARR runtime'da değişirse, yani değer hemen mi yoksa bir sonraki timer döngüsünde geçerli olacak, işte ARPE bunu belirler.
+
+## b. ARPE Disable (Pasif)
+ARR değeri değiştiği anda yüklenir. Sonuç:
+- Timer o anda sayıyor, yeni ARR ile bir "glitch" oluşabilir -> sürede ani değişiklik, kısa bir periyot veya beklenmedik interrupt tetiklenmesi.
+- Kısa süreli glitch'ler gözle görülemeyebilir ama hassas sistemlerde sorun olabilir.
+
+**Özet:
+ARR değiştiğinde hemen uygulanır, timer döngüsü beklenmez.**
+
+## c. ARPE Enable (Aktif)
+ARR değeri değiştirildiğinde buffer register'a yazılır. Yani değer sadece update event (UEV) geldiğinde geçerli olur. Sonuç:
+- Timer glitch riski yok.
+- Periyor değişikliiği düzgün ve kontrollü bir şekilde uygulanır.
+- Hassas zamanlama gerektiren uygulamalarda tercih edilir.
+
+## d. Neye Göre Karar Veriyoruz
+|                              Durum                                     |         ARPE         |
+|------------------------------------------------------------------------|----------------------|
+| Timer çalışırken ARR'yi değiştirmeyeceksen                             | Disable yeterli      |
+| ARR runtime'da değişecek (dinamik periyor, PWM duty, motor kontrol vs. | Enable önerilir      |
+| Hassas periyot ve interrupt zamanlaması önemli                         | Enable tercih edilir |
+| Basit timer ile tek seferlik delay                                     | Disable da olur      |
+
+## e. Örnek (PWM gibi senaryo)
+Timer PWM modunda, ARR runtime erişebilir. Eğer Enable değilse -> PWM dalga boyu glitch yapabilir. Eğer Enable ise -> PWM dalga boyu düzgün, bir sonraki cycle'da değişir.

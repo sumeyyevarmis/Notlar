@@ -117,81 +117,6 @@ Yani ARR; "Timerın bir döngüsünün kaç sayımda tamamlanacağını belirley
 
 Bu yüzden ARR'yi değiştirmek zorunlu olur.
 
-<<<<<<< HEAD
-# 4. Frekans Hesabı
-
-## a. Temel Kavramlar
-Timer frekansını hesaplarken bilmemiz gereken 3 temel şey vardır:
-1. **Timer clock (TIMxCLK):** Timer'ın beslendiği clock.
-  * H7'de APB1 veya APB2 üzerinden gelir.
-  * Eğer APB prescaler > 1 ise timer clock = 2 * PCLK (STM32 mantığı)
-2. **Prescaler (PSC):** Timer sayacını böler.
-  * PSC register değeri N ise;
-    fcount = TIMxCLK / (PSC + 1)
-3. **Auto-Reload Register (ARR):** Sayacının sayacağı maksimum değer.
-  * Timer 0'dan ARR'ye sayar. Toplam ARR + 1 sayım
-
-## b. Timer Periyodu ve Frekansı
-**Periyot (T):** Timer overflow süresi, yani bir döngü süresi;
-T = ( (ARR + 1) (PSC + 1) ) / TIMxCLK
-
-**Frekans (f):** Timer overflow sıklığı
-f = 1 / T = TIMxCLK / ( (ARR + 1) (PSC +1) )
-
-## c. Örnek
-PSC = 1830,
-ARR = 65535,
-TIMxCLK = 240000000 MHz
-
-1. Timer sayım frekansı:
-fcount = TIMxCLK / (PSC +1) = 240000000 / 1831 ≌ 131000 Hz
-
-Yani timer her ∼ 7.63 us'de bir artıyor.
-
-2. Timer frekansı (overflow sıklığı)
-f = 1 / T ≌ 2 Hz
-
-Yani bu ayarla TICx her 0.5 saniyede bir interrupt beya update event üretir.
-
-## d. Not
-- PSC küçük -> sayım hızlı, çözünürlük yüksek ama ARR ile uzun periyot zor
-- PSC büyük -> sayım yavaş, uzun periyot kolay, çözünürlük düşük
-
-# 6. PeriodElapsedCallback Nedir?
-
-## a. PeriodElapsedCallback Nedir?
-STM32 HAL kütüphanesinde timer overflow (update event) oluştuğunda çağrılan "callback" fonksiyonudur. Yani timer sayacı ARR'ye ulaştığında otomatik olarak tetiklenir.
-
-````c
-void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef *htim)
-{
-  if (htim->Instance == TIM6)
-  {
-    // işlemler
-  }
-}
-````
-### Özellikler
-- HAL taradında weak olarak tanımlanmıştır -> kullanıcı override eder.
-- Interrupt bazlıdır -> ISR içinde çağrılır.
-- Genellikle periyot bazlı işler için kullanılır (LED toggle, sayaç artışı, DAC tetikleme vs.)
-
-## b. Neden Kullanılır?
-1. Periyodik işlemler yapmak için; 
-  * Örnek: Her 500 ms'de bir LED toggling
-2. Zamanlayıcı bazlı interrupt yönetmek için;
-  * Timer overflow -> callback -> uygulama kodunu burada çalıştır.
-3. DAC tetikleme veya sinyal üretme;
-  * TIM6 basic timer, genellikle DAC trigger olarak kullanılır -> update evet tetikleme
-
-Yani **Basic Timer için tek gerçek "olay" update event'dir.** PWM veya capture/compare yok, callback'ler de sadece periyod elapsed veya DMA ile DAC tetikleme gibi işlerde olur.
-
-## c. Başka Hangi HAL Callback'ler var (Basic Timer'da)
-- HAL_TIM_PeriodElapsedCallback: Timer ARR'ye ulaşıp overflow olduğunda (update event)
-- HAL_TIM_PWM_PulseFinishedCallback: PWM modu değilse, Basic timer da yok.
-- HAL_TIM_IC_CaptureCallback: Input capture mod, yoksa yok.
-- HAL_TIM_OC_DelayElapsedCallback: Output Compere modu, yoksa yok.
-=======
 # 4. Auto-Reload Preload Nedir? (Enable/Disable)
 
 ## a. Auto-Reload Preload (APRE) Nedir?
@@ -214,17 +139,18 @@ ARR değeri değiştirildiğinde buffer register'a yazılır. Yani değer sadece
 - Hassas zamanlama gerektiren uygulamalarda tercih edilir.
 
 ## d. Neye Göre Karar Veriyoruz
-|                              Durum                                     |         ARPE         |
-|------------------------------------------------------------------------|----------------------|
-| Timer çalışırken ARR'yi değiştirmeyeceksen                             | Disable yeterli      |
-| ARR runtime'da değişecek (dinamik periyor, PWM duty, motor kontrol vs. | Enable önerilir      |
-| Hassas periyot ve interrupt zamanlaması önemli                         | Enable tercih edilir |
-| Basit timer ile tek seferlik delay                                     | Disable da olur      |
+|                              Durum                                      |         ARPE         |
+|-------------------------------------------------------------------------|----------------------|
+| Timer çalışırken ARR'yi değiştirmeyeceksen                              | Disable yeterli      |
+| ARR runtime'da değişecek (dinamik periyor, PWM duty, motor kontrol vs.) | Enable önerilir      |
+| Hassas periyot ve interrupt zamanlaması önemli                          | Enable tercih edilir |
+| Basit timer ile tek seferlik delay                                      | Disable da olur      |
 
 ## e. Örnek (PWM gibi senaryo)
 Timer PWM modunda, ARR runtime erişebilir. Eğer Enable değilse -> PWM dalga boyu glitch yapabilir. Eğer Enable ise -> PWM dalga boyu düzgün, bir sonraki cycle'da değişir.
 
-# 4. Frekans Hesabı
+
+# 5. Frekans Hesabı
 
 ## a. Temel Kavramlar
 Timer frekansını hesaplarken bilmemiz gereken 3 temel şey vardır:
@@ -262,6 +188,7 @@ Yani bu ayarla TICx her 0.5 saniyede bir interrupt beya update event üretir.
 ## d. Not
 - PSC küçük -> sayım hızlı, çözünürlük yüksek ama ARR ile uzun periyot zor
 - PSC büyük -> sayım yavaş, uzun periyot kolay, çözünürlük düşük
+
 
 # 6. PeriodElapsedCallback Nedir?
 

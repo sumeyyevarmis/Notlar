@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_1-ButtonLED_CM4,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_1-ButtonLED_CM7,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Lab-1-Cache_CM7,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Lab-1-Cache_CM4,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_2_LedBlink_CM7,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_2_LedBlink_CM4,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_3_LedButton_CM7,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_3_LedButton_CM4
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_1-ButtonLED_CM4,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_1-ButtonLED_CM7,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Lab-1-Cache_CM7,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_Lab-1-Cache_CM4,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_2_LedBlink_CM4,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_3_LedButton_CM4,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_2_LedBlink_CM7,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_3_LedButton_CM7,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:4_Timer-1_CM7,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:4_Timer-1_CM4
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_1-ButtonLED_CM4/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:1_1-ButtonLED_CM4/activeLaunchTarget=null\:---

@@ -3,6 +3,7 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="HAL_TIM"/>
 		<item value="EXTI15_10_IRQHandler"/>
 		<item value="void EXTI15_10_IRQHandler"/>
 		<item value="EXTI"/>

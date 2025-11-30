@@ -1,4 +1,4 @@
-22:20:38 **** Incremental Build of configuration Debug for project 1_2_LedBlink_CM4 ****
+18:06:14 **** Incremental Build of configuration Debug for project 1_2_LedBlink_CM4 ****
 make -j16 all 
 arm-none-eabi-size  1_2_LedBlink_CM4.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  1_2_LedBlink_CM4.elf
 Finished building: default.size.stdout
  
 
-22:20:38 Build Finished. 0 errors, 0 warnings. (took 190ms)
+18:06:14 Build Finished. 0 errors, 0 warnings. (took 134ms)
 

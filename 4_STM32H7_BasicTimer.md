@@ -224,3 +224,28 @@ Yani **Basic Timer için tek gerçek "olay" update event'dir.** PWM veya capture
 - HAL_TIM_PWM_PulseFinishedCallback: PWM modu değilse, Basic timer da yok.
 - HAL_TIM_IC_CaptureCallback: Input capture mod, yoksa yok.
 - HAL_TIM_OC_DelayElapsedCallback: Output Compere modu, yoksa yok.
+
+
+# 7. Trigger Output Parameters
+
+## a. Trigger OutPut (TRGO) Nedir?
+- TRGO, bir timer'ın başka bir modülü tetiklemek için ürettiği sinyal çıktısıdır.
+- Basic Timer için TRGO, master timer olarak DAC veya başka timer'ları tetiklemek için kullanılır.
+
+## b. Trigger Event Selection Seçenekleri (Basic Timer)
+- **Update Event:** Timer sayacı ARR'ye ılaştığında (overflow) TRGO sinyali üretir. DAC, ADC tetikleme, periyodik olaylarda kullanılır.
+- **Reset (UG bit from TIMx_EGR):** Timer'a yazılan UG (Update Generation) bit'i ile TRGO üretilir. Manual veya yazılım ile tek seferlik tetikleme gerektiren durumlarda tercih edilir.
+- **Enable (CNT_EN):** Timer sayacı aktif edildiğinde (CNT bit = 1) TRGO sinyali üretir. Timer başlar başlamaz tetiklenme, start event'i tetiklemek için kullanılır.
+
+## -
+- **Update Event -> PeriodElaspsedCallback:**
+  * PeriodElaspsedCallback ile iilişkilidir.
+  * Timer ARR'ye ulaşınca Update Event oluşur. 
+  * Eğer interrupt enable ise -> PeriodElaspsedCallback çağrılır.
+  * Eğer TRGO'da Update Event olarak seçildiyse dişarıya TRGO sinyali çıkar.
+
+- **Reset (UG bit from TIMx_EGR):** 
+  * TRGO, sadece UG (Update Generation) bit'i yazıldığında üretilir. Yani software tetikleme. Update Interrupt oluşmaz. PeriodElaspsedCallback dolayısıyla yoktur.
+
+- **Enable (CNT_EN):**
+  * Timer başladığı anda bir TRGO pulse üretir. Sonrasında tekrar üretmez. Bu bir start event sinyali. Update Interrupt ile ilgisi yoktur. Dolayısıyla PeriodElaspsedCallbackyoktur.
